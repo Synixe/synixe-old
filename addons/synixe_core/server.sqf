@@ -40,7 +40,7 @@ if (count (entities "ACE_moduleReviveSettings") > 1) then {
     sleep 3;
     //VCOM Changes
     {
-      _x setVariable ["VCOM_NOPATHING_Unit",1,false];
+      _x setvariable ["VCOM_NOPATHING_Unit",true];
     } forEach allUnits;
   }
 }
