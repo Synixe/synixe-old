@@ -20,6 +20,7 @@ if (count (entities "ACE_moduleReviveSettings") > 1) then {
 [] spawn {
   while {true} do {
     sleep 1;
+    //Zeus edit zone
     if (!isNil "SynixeCur") then {
       removeAllCuratorEditingAreas SynixeCur;
       _y = 0;
@@ -33,3 +34,13 @@ if (count (entities "ACE_moduleReviveSettings") > 1) then {
     };
   };
 };
+
+[] spawn {
+  while {true} do {
+    sleep 3;
+    //VCOM Changes
+    {
+      _x setVariable ["VCOM_NOPATHING_Unit",1,false];
+    } forEach allUnits;
+  }
+}
