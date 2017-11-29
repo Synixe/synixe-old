@@ -1,6 +1,7 @@
-//TFAR Settings
+
 [] spawn {
   sleep 8; //TODO Find a way to wait for TFAR to be ready
+  //TFAR Settings
   if (call TFAR_fnc_haveSWRadio) then {
     [(call TFAR_fnc_activeSwRadio), 1, "31"] call TFAR_fnc_setChannelFrequency;
     [(call TFAR_fnc_activeSwRadio), 2, "32"] call TFAR_fnc_setChannelFrequency;
@@ -23,5 +24,10 @@
     [(call TFAR_fnc_activeLrRadio), 9, "41"] call TFAR_fnc_setChannelFrequency;
     //Set 30 active on LR by default
     [call TFAR_fnc_activeLrRadio, 6] call TFAR_fnc_setLrChannel;
+  };
+
+  //Earplugs
+  if (!("ACE_EarPlugs" in items player)) then {
+    player addItem "ACE_EarPlugs";
   };
 };

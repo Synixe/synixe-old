@@ -1,4 +1,4 @@
-//Check if mission already has a ACE Revive Module, create on if missing
+//Check if mission already has a ACE Revive Module, create one if missing
 if (count (entities "ACE_moduleReviveSettings") > 1) then {
   systemChat "ACE Revive Found";
 } else {
