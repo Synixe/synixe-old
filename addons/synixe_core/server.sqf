@@ -1,11 +1,15 @@
-//ACE Medical
-ACE_group = createGroup sideLogic;
-ACEReviveModule = ACE_group createunit["ACE_moduleReviveSettings", [0,90,90], [], 0.5, "NONE"];
-publicVariable "ACEReviveModule";
-ACEReviveModule setVariable ["maxReviveTime", 600];
-ACEReviveModule setVariable ["amountOfReviveLives", 3];
-ACEReviveModule setVariable ["enableRevive", 1];
-systemChat "ACE Revive Loaded";
+//Check if mission already has a ACE Revive Module, create on if missing
+if (count (entities "ACE_moduleReviveSettings") > 1) then {
+  systemChat "ACE Revive Found";
+} else {
+  ACE_group = createGroup sideLogic;
+  ACEReviveModule = ACE_group createunit["ACE_moduleReviveSettings", [0,90,90], [], 0.5, "NONE"];
+  publicVariable "ACEReviveModule";
+  ACEReviveModule setVariable ["maxReviveTime", 600];
+  ACEReviveModule setVariable ["amountOfReviveLives", 3];
+  ACEReviveModule setVariable ["enableRevive", 1];
+  systemChat "ACE Revive Created";
+};
 
 [] spawn {
   [   {time > 5},
