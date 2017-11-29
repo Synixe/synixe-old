@@ -1,9 +1,9 @@
 //Zeus
 if (!isNil "zeus") then {
   if (!isNil "SynixeCur") then {
-		deleteVehicle SynixeCur;
-		missionNamespace setVariable ["SynixeCur", nil, true];
-	};
+  deleteVehicle SynixeCur;
+  missionNamespace setVariable ["SynixeCur", nil, true];
+  };
   if (isNil "SynixeCur") then {
     if (isNil "SynixeCur_group") then {SynixeCur_group = creategroup sideLogic;};
     publicVariable "SynixeCur_group";

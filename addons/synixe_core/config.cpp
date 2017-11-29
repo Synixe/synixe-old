@@ -12,8 +12,8 @@ class CfgPatches
 };
 
 class CfgFunctions {
-	class Synixe {
-		class Init {
+  class Synixe {
+  class Init {
       class ClientPostInit {
         file = "\synixe_core\post.sqf";
         postInit = 1;
@@ -24,6 +24,6 @@ class CfgFunctions {
       class ZeusInit {
         file = "\synixe_core\zeus.sqf";
       };
-		};
-	};
+  };
+  };
 };

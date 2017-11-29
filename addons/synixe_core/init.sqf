@@ -1,14 +1,16 @@
 //TFAR Settings
 [] spawn {
   sleep 8;
-  [(call TFAR_fnc_activeSwRadio), 1, "31"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeSwRadio), 2, "32"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeSwRadio), 3, "33"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeSwRadio), 4, "34"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeSwRadio), 5, "35"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeSwRadio), 6, "36"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeSwRadio), 7, "30"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeSwRadio), 8, "40"] call TFAR_fnc_setChannelFrequency;
+  if (call TFAR_fnc_haveSWRadio) then {
+    [(call TFAR_fnc_activeSwRadio), 1, "31"] call TFAR_fnc_setChannelFrequency;
+    [(call TFAR_fnc_activeSwRadio), 2, "32"] call TFAR_fnc_setChannelFrequency;
+    [(call TFAR_fnc_activeSwRadio), 3, "33"] call TFAR_fnc_setChannelFrequency;
+    [(call TFAR_fnc_activeSwRadio), 4, "34"] call TFAR_fnc_setChannelFrequency;
+    [(call TFAR_fnc_activeSwRadio), 5, "35"] call TFAR_fnc_setChannelFrequency;
+    [(call TFAR_fnc_activeSwRadio), 6, "36"] call TFAR_fnc_setChannelFrequency;
+    [(call TFAR_fnc_activeSwRadio), 7, "30"] call TFAR_fnc_setChannelFrequency;
+    [(call TFAR_fnc_activeSwRadio), 8, "40"] call TFAR_fnc_setChannelFrequency;
+  };
   if (call TFAR_fnc_haveLRRadio) then {
     [(call TFAR_fnc_activeLrRadio), 1, "31"] call TFAR_fnc_setChannelFrequency;
     [(call TFAR_fnc_activeLrRadio), 2, "32"] call TFAR_fnc_setChannelFrequency;
