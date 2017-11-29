@@ -2,7 +2,7 @@
 
 ## Features
 * Automatic Zeus Setup
-* Automatic TFAR Frequence Setup
+* Automatic TFAR Frequency Setup
 * Adds ACE Revive to any mission
 
 ## License
