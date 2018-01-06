@@ -6,13 +6,14 @@
     player addItem "ACE_EarPlugs";
   };
 
-  //Diable Chat
-  0 enableChannel [true, false];
-  1 enableChannel [false, false];
-  2 enableChannel [false, false];
-  3 enableChannel [false, false];
-  4 enableChannel [false, false];
-  5 enableChannel [false, false];
+  //Disable chat
+  0 enableChannel [true, false];  //Global - Text Only
+  1 enableChannel [true, false];  //Side   - Text Only
+  2 enableChannel false;          //Command
+  3 enableChannel false;          //Group
+  4 enableChannel false;          //Vehicle
+  5 enableChannel false;          //Direct
+  setCurrentChannel 0;            //Change to Global
 
   sleep 8; //TODO Find a way to wait for TFAR to be ready
   //TFAR Settings
@@ -32,7 +33,7 @@
       case "charlie":   { [(call TFAR_fnc_activeSwRadio), 2] call TFAR_fnc_setSwChannel; };
       case "delta":     { [(call TFAR_fnc_activeSwRadio), 3] call TFAR_fnc_setSwChannel; };
       case "echo":      { [(call TFAR_fnc_activeSwRadio), 4] call TFAR_fnc_setSwChannel; };
-      case "foxtro":    { [(call TFAR_fnc_activeSwRadio), 5] call TFAR_fnc_setSwChannel; };
+      case "foxtrot":   { [(call TFAR_fnc_activeSwRadio), 5] call TFAR_fnc_setSwChannel; };
     };
 
   };
