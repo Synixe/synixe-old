@@ -6,7 +6,7 @@ if (!isNil "zeus") then {
   if (isNil "SynixeCur") then {
     if (isNil "SynixeCur_group") then {SynixeCur_group = creategroup sideLogic;};
     publicVariable "SynixeCur_group";
-    SynixeCur = SynixeCur_group createunit["ModuleCurator_F", [0, 90, 90], [], 0.5, "NONE"];	//Logic Server
+    SynixeCur = SynixeCur_group createunit["ModuleCurator_F", [0, 90, 90], [], 0.5, "NONE"];
     SynixeCur setVariable ["showNotification",false];
     SynixeCur setVariable ["TFAR_curatorCamEars", true];
     SynixeCur setCuratorEditingAreaType false;
@@ -22,8 +22,8 @@ if (!isNil "zeus") then {
     if (count _newAddons > 0) then {SynixeCur addCuratorAddons _newAddons};
     SynixeCur setcuratorcoef["place", 0];
     SynixeCur setcuratorcoef["delete", 0];
+    unassignCurator SynixeCur;
+    sleep 0.4;
     zeus assignCurator SynixeCur;
-    systemChat "Curator Created";
-    //No editing around players
   };
 };

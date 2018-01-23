@@ -3,9 +3,8 @@
 ## Features
 * Automatic Zeus Setup
 * Automatic TFAR Frequency Setup
-* Adds ACE Revive to any mission
+* Automatic TFAR Channel Switching for Squads
 * Adds ACE Earplugs to all players
-* VCOM_NOPATHING set to True
 
 ## License
 The Synixe Mod for Arma 3 is licensed under the GNU General Public License version 3.  
