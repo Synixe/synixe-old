@@ -28,5 +28,10 @@ class CfgFunctions {
         file = "\synixe_core\zeus.sqf";
       };
     };
+    class Utils {
+      class Breath {
+        file = "\synixe_core\breath.sqf";
+      }
+    }
   };
 };

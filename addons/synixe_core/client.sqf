@@ -5,6 +5,9 @@
     player addItem "ACE_EarPlugs";
   };
 
+  //Breath Effect
+  [] spawn {[player, 0.01] call Synixe_fnc_Breath;};
+
   //Disable chat
   0 enableChannel [true, false];  //Global - Text Only
   1 enableChannel [true, false];  //Side   - Text Only

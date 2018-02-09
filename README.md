@@ -5,6 +5,7 @@
 * Automatic TFAR Frequency Setup
 * Automatic TFAR Channel Switching for Squads
 * Adds ACE Earplugs to all players
+* Adds a foggy breath effect to all maps when below 7.2 degrees
 
 ## License
 The Synixe Mod for Arma 3 is licensed under the GNU General Public License version 3.  
