@@ -1,6 +1,7 @@
 # Synixe
 
 ## Features
+* Adds Discord Rich Presence
 * Automatic Zeus Setup
 * Automatic TFAR Frequency Setup
 * Automatic TFAR Channel Switching for Squads

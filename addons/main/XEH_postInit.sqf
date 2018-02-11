@@ -1,11 +1,13 @@
+#include "script_component.hpp"
+
 if (isServer) then {
-  call Synixe_fnc_ServerInit;
+  call FUNC(zeus);
 };
 
 if (hasInterface) then {
   [] spawn {
     [   {time > 0 && !(isNull player)}, //Wait for player to be loaded
-        Synixe_fnc_ClientInit
+        FUNC(clientSetup)
     ] call CBA_fnc_waitUntilAndExecute;
   };
 };
