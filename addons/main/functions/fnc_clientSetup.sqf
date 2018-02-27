@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 
-if (missionName == "SynixeZeusTemplate") {
+if (missionName == "SynixeZeusTemplate") then {
   _faction = paramsArray select 0;
   _un = paramsArray select 1 == 1;
   [player, _faction, _un] spawn FUNC(loadout);
-}
+};
 
 [] spawn FUNC(disableChat);
 [] spawn FUNC(earplugs);

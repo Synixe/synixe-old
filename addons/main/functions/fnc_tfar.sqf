@@ -16,8 +16,8 @@ if (call TFAR_fnc_haveSWRadio) then {
     case "echo":      { [(call TFAR_fnc_activeSwRadio), 4] call TFAR_fnc_setSwChannel; };
     case "foxtrot":   { [(call TFAR_fnc_activeSwRadio), 5] call TFAR_fnc_setSwChannel; };
   };
-
 };
+
 if (call TFAR_fnc_haveLRRadio) then {
   [(call TFAR_fnc_activeLrRadio), 1, "31"] call TFAR_fnc_setChannelFrequency;
   [(call TFAR_fnc_activeLrRadio), 2, "32"] call TFAR_fnc_setChannelFrequency;
