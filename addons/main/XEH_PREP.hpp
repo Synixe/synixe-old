@@ -7,6 +7,7 @@ PREP(earplugs);
 PREP(disableChat);
 PREP(tfar);
 PREP(discord);
+PREP(loadout);
 
 //Server Side
 PREP(zeus);

@@ -6,3 +6,9 @@ texHeaders.bin
 *.swo
 *.biprivatekey
 Thumbs.db
+extras/
+.vs/
+packages/
+DllExport.bat
+bin/
+obj/

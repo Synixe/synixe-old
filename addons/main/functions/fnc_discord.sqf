@@ -1,5 +1,5 @@
 [] spawn {
-  "synixe" callExtension "setup";
+  "synixe" callExtension ["setup", [getPlayerUID player]];
   _role = roleDescription player;
   _mission = missionName;
   if (_mission == "tempMissionSP") then {

@@ -1,10 +1,6 @@
-﻿using DiscordRpcDemo;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using DiscordRpcDemo;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Synixe
 {
@@ -32,7 +28,6 @@ namespace Synixe
         public static void RvExtension(StringBuilder output, int outputSize, [MarshalAs(UnmanagedType.LPStr)] string function)
         {
             outputSize--;
-            output.Append(function);
             switch(function)
             {
                 case "setup":
@@ -41,7 +36,6 @@ namespace Synixe
                     data.handlers = new DiscordRpc.EventHandlers();
 
                     DiscordRpc.Initialize("411594868293500938", ref data.handlers, true, null);
-                    output.Append("Setup!");
                     break;
             }
         }
@@ -52,19 +46,16 @@ namespace Synixe
             [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPStr, SizeParamIndex = 4)] string[] args, int argCount)
         {
             outputSize--;
-            output.Append(function);
             switch(function)
             {
                 case "update":
                     Data data = Data.GetData();
                     data.presence.details           = args[0].Trim().Trim('"');  //Mission Name
                     data.presence.state             = args[1].Trim().Trim('"');  //Role
-                    data.presence.largeImageKey     = args[2].Trim().Trim('"');  //Map engine name  
+                    data.presence.largeImageKey     = args[2].Trim().Trim('"');  //Map engine name
                     data.presence.largeImageText    = args[3].Trim().Trim('"');  //Map friendly name
 
                     DiscordRpc.UpdatePresence(ref data.presence);
-                    output.Append("Updated!");
-
                     break;
             }
             return 1;

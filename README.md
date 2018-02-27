@@ -6,6 +6,7 @@
 * Automatic TFAR Frequency Setup
 * Automatic TFAR Channel Switching for Squads
 * Adds ACE Earplugs to all players
+* Adds Automatic Loadout Switching for Zeus Templates
 * Adds a foggy breath effect to all maps when below 7.2 degrees
 
 ## License
