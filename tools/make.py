@@ -57,7 +57,7 @@ if sys.platform == "win32":
     import winreg
 
 ######## GLOBALS #########
-project = "@sgc_mod"
+project = "@synixe"
 project_version = "3.0.0"
 arma3tools_path = ""
 work_drive = ""
@@ -66,13 +66,13 @@ make_root = ""
 release_dir = ""
 module_root_parent = ""
 optionals_root = ""
-key_name = "sgc_mod"
+key_name = "synixe"
 key = ""
 dssignfile = ""
-prefix = "sgc_mod"
-pbo_name_prefix = "sgc_mod_"
+prefix = "synixe"
+pbo_name_prefix = "synixe_"
 signature_blacklist = []
-importantFiles = ["mod.cpp", "README.md", "AUTHORS.txt", "LICENSE", "logo_sgc_mod_ca.paa"]
+importantFiles = ["mod.cpp", "README.md", "AUTHORS.txt", "LICENSE", "logo_synixe_ca.paa"]
 versionFiles = ["README.md", "mod.cpp"]
 
 ciBuild = False # Used for CI builds

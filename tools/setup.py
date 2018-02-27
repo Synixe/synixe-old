@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #######################
-#  SGC_MOD3 Setup Script  #
+#  SYNIXE3 Setup Script  #
 #######################
 
 import os
@@ -13,26 +13,26 @@ import winreg
 
 ######## GLOBALS #########
 MAINDIR = "z"
-PROJECTDIR = "sgc_mod"
+PROJECTDIR = "synixe"
 ##########################
 
 def main():
     FULLDIR = "{}\\{}".format(MAINDIR,PROJECTDIR)
     print("""
   ######################################
-  # SGC_MOD3 Development Environment Setup #
+  # SYNIXE3 Development Environment Setup #
   ######################################
 
-  This script will create your SGC_MOD3 dev environment for you.
+  This script will create your SYNIXE3 dev environment for you.
 
   Before you run this, you should already have:
     - A properly setup ACE3 Development Environment
 
   If you have not done those things yet, please abort this script in the next step and do so first.
 
-  This script will create two hard links on your system, both pointing to your SGC_MOD3 project folder:
-    [Arma 3 installation directory]\\{} => SGC_MOD3 project folder
-    P:\\{}                              => SGC_MOD3 project folder
+  This script will create two hard links on your system, both pointing to your SYNIXE3 project folder:
+    [Arma 3 installation directory]\\{} => SYNIXE3 project folder
+    P:\\{}                              => SYNIXE3 project folder
     """.format(FULLDIR,FULLDIR))
     print("\n")
 

@@ -6,7 +6,7 @@ import subprocess
 
 ######## GLOBALS #########
 MAINPREFIX = "z"
-PREFIX = "sgc_mod_"
+PREFIX = "synixe_"
 ##########################
 
 def mod_time(path):
@@ -32,7 +32,7 @@ def check_for_obsolete_pbos(addonspath, file):
 def main():
     print("""
   ####################
-  # SGC_MOD3 Debug Build #
+  # SYNIXE3 Debug Build #
   ####################
 """)
 

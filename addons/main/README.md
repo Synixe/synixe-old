@@ -1,4 +1,4 @@
-sgc_mod_main
+synixe_main
 ========
 
 The main component of the Synixe mod

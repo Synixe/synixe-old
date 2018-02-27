@@ -12,3 +12,4 @@ packages/
 DllExport.bat
 bin/
 obj/
+*.dll

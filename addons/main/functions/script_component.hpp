@@ -1,1 +1,1 @@
-#include "\z\sgc_mod\addons\main\script_component.hpp"
+#include "\z\synixe\addons\main\script_component.hpp"

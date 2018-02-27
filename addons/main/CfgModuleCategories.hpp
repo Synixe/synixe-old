@@ -1,14 +1,14 @@
 class CfgFactionClasses {
     class NO_CATEGORY;
-    class SGC_MOD: NO_CATEGORY {
-        displayName = "SGC_MOD";
+    class SYNIXE: NO_CATEGORY {
+        displayName = "SYNIXE";
         priority = 2;
         side = 7;
     };
 };
 
 class CfgVehicleClasses {
-    class SGC_MOD_Vehicles {
-        displayName = "SGC_MOD Vehicles";
+    class SYNIXE_Vehicles {
+        displayName = "SYNIXE Vehicles";
     };
 };
