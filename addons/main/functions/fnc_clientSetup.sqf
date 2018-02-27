@@ -1,15 +1,15 @@
 #include "script_component.hpp"
 
 if (missionName == "SynixeZeusTemplate") then {
-  _faction = paramsArray select 0;
-  _un = paramsArray select 1 == 1;
-  [player, _faction, _un] spawn FUNC(loadout);
+  if (player == curator) then { //Let Zeus select faction
+    [] spawn FUNC(factionSelect);
+  };
+} else {
+  [player] spawn FUNC(earplugs);
 };
 
 [] spawn FUNC(disableChat);
-[] spawn FUNC(earplugs);
 [] spawn FUNC(discord);
-
 [] spawn FUNC(breath);
 
 [] spawn {

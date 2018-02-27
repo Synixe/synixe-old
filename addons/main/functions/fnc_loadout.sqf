@@ -1,8 +1,10 @@
 params [
-  [_unit, objNull],
-  [_faction, 1],
-  [_un, false]
+  ["_unit", objNull],
+  ["_faction", 1],
+  ["_un", false]
 ];
+
+//TODO Refactor to allow specifying a role
 
 switch (typeOf _unit) do {
   case "B_Soldier_SL_F": { //Squad Leader
@@ -131,3 +133,5 @@ if (_un) then {
   removeHeadgear _unit;
   _unit addHeadgear "sab_UN_Helmet";
 };
+
+[_unit] call FUNC(earplugs);

@@ -1,5 +1,11 @@
-//Gives the player earplugs if they don't already have them
+//Gives the unit earplugs if they don't already have them
 
-if (!("ACE_EarPlugs" in items player)) then {
-  player addItem "ACE_EarPlugs";
+params [
+  ["_unit", objNull]
+];
+
+if (_unit == objNull) exitWith {};
+
+if (!("ACE_EarPlugs" in items _unit)) then {
+  _unit addItem "ACE_EarPlugs";
 };

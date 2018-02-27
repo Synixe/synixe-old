@@ -8,6 +8,7 @@ PREP(disableChat);
 PREP(tfar);
 PREP(discord);
 PREP(loadout);
+PREP(factionSelect);
 
 //Server Side
 PREP(zeus);
