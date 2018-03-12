@@ -112,10 +112,10 @@ switch (typeOf _unit) do {
         _unit setUnitLoadout [["caf_C8a3_artic","","","optic_elcan_arctic",["30Rnd_556X45_NATO",30],[],""],["launch_B_Titan_short_F","","ACE_acc_pointer_green","",["Titan_AT",1],[],""],["rhsusf_weap_m9","","","",["rhsusf_mag_15Rnd_9x19_JHP",15],[],""],["CBU_uniform_winter_U",[["ACE_fieldDressing",6],["ACE_morphine",3],["SmokeShell",1,1],["Chemlight_green",1,1]]],["CBU_armor_winter",[["SmokeShell",2,1],["Chemlight_yellow",1,1],["HandGrenade",3,1],["SmokeShellBlue",1,1],["rhsusf_mag_15Rnd_9x19_JHP",2,15],["30Rnd_556X45_NATO",5,30]]],["winter_pack",[["Titan_AT",2,1]]],"winter_Helmet","",["ACE_VectorDay","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles_OPFOR"]];
       };
       case 4: { //USAF Woodland
-        _unit setUnitLoadout [["rhs_m4_compm4","","","rhsusf_acc_compm4",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],["launch_B_Titan_short_F","","","",["Titan_AT",1],[],""],[],["rhs_uniform_cu_ocp",[["rhsusf_patrolcap_ucp",1],["ACE_fieldDressing",6],["ACE_morphine",3],["rhs_mag_30Rnd_556x45_M855_Stanag",2,30]]],["rhsusf_iotv_ocp_Rifleman",[["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30],["rhs_mag_m67",2,1]]],["B_Kitbag_mcamo",[["Titan_AT",2,1]]],"rhsusf_ach_helmet_ocp","rhs_googles_black",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+        _unit setUnitLoadout [["rhs_m4_compm4","","","rhsusf_acc_compm4",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],["launch_B_Titan_short_F","","","",["Titan_AT",1],[],""],[],["rhs_uniform_cu_ucp",[["rhsusf_patrolcap_ucp",1],["ACE_fieldDressing",6],["ACE_morphine",3],["rhs_mag_30Rnd_556x45_M855_Stanag",2,30]]],["rhsusf_iotv_ucp_Rifleman",[["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30],["rhs_mag_m67",2,1]]],["B_Kitbag_cbr",[]],"rhsusf_ach_helmet_ucp","rhs_googles_black",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
       };
       case 5: { //USAF Desert
-        _unit setUnitLoadout [["rhs_m4_compm4","","","rhsusf_acc_compm4",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],["launch_B_Titan_short_F","","","",["Titan_AT",1],[],""],[],["rhs_uniform_cu_ucp",[["rhsusf_patrolcap_ucp",1],["ACE_fieldDressing",6],["ACE_morphine",3],["rhs_mag_30Rnd_556x45_M855_Stanag",2,30]]],["rhsusf_iotv_ucp_Rifleman",[["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30],["rhs_mag_m67",2,1]]],["B_Kitbag_cbr",[]],"rhsusf_ach_helmet_ucp","rhs_googles_black",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+        _unit setUnitLoadout  [["rhs_m4_compm4","","","rhsusf_acc_compm4",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],["launch_B_Titan_short_F","","","",["Titan_AT",1],[],""],[],["rhs_uniform_cu_ocp",[["rhsusf_patrolcap_ucp",1],["ACE_fieldDressing",6],["ACE_morphine",3],["rhs_mag_30Rnd_556x45_M855_Stanag",2,30]]],["rhsusf_iotv_ocp_Rifleman",[["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30],["rhs_mag_m67",2,1]]],["B_Kitbag_mcamo",[["Titan_AT",2,1]]],"rhsusf_ach_helmet_ocp","rhs_googles_black",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
       };
     };
   };
@@ -154,4 +154,8 @@ if (_un) then {
   _unit addHeadgear "sab_UN_Helmet";
 };
 
-[_unit] call FUNC(earplugs);
+[] spawn {
+    sleep 2;
+    [_unit] call FUNC(earplugs);
+    call FUNC(tfar);
+};
