@@ -25,6 +25,10 @@ class CfgVehicles {
     isTriggerActivated = 0;
     isDisposable = 0;
 
+    icon = "\achilles\data_f_achilles\icons\icon_default_unit.paa";
+  	picture = "\achilles\data_f_achilles\icons\icon_default_unit.paa";
+  	portrait = "\achilles\data_f_achilles\icons\icon_default_unit.paa";
+
     class Arguments {};
     class ModuleDescription: ModuleDescription {
       description = "Synixe Module Base";
@@ -36,6 +40,7 @@ class CfgVehicles {
     scopeCurator = 2;
     function = "synixe_modules_fnc_loadout";
     displayName = "Change Loadout";
+    icon = "\achilles\data_f_achilles\icons\icon_default_unit.paa"
   };
 
   class Synixe_Module_Earplugs: Synixe_Module_Base {
@@ -43,5 +48,6 @@ class CfgVehicles {
     scopeCurator = 2;
     function = "synixe_modules_fnc_earplugs";
     displayName = "Give Earplugs";
+    icon = "\achilles\data_f_achilles\icons\icon_default_unit.paa"
   };
 };

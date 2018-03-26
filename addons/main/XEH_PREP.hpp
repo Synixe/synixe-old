@@ -1,14 +1,17 @@
 // FUNCTION PREPS
 
 //Client Side
-PREP(clientSetup);
 PREP(breath);
-PREP(earplugs);
+PREP(clientSetup);
 PREP(disableChat);
-PREP(tfar);
 PREP(discord);
-PREP(loadout);
+PREP(earplugs);
 PREP(factionSelect);
+PREP(loadout);
+PREP(roleSelect);
+PREP(setFace);
+PREP(szt);
+PREP(tfar);
 
 //Server Side
-PREP(zeus);
+//PREP(zeus);

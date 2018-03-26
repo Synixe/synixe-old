@@ -1,7 +1,10 @@
 #include "script_component.hpp"
 
 if (isServer) then {
-  call FUNC(zeus);
+  //call FUNC(zeus);
+  if (missionName == "SZTv2") then {
+    missionNamespace setVariable ["SZT_FACTION", -1, true];
+  }
 };
 
 if (hasInterface) then {

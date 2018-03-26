@@ -9,12 +9,23 @@ if (call TFAR_fnc_haveSWRadio) then {
   [(call TFAR_fnc_activeSwRadio), 8, "40"] call TFAR_fnc_setChannelFrequency;
 
   switch (toLower(groupId(group player))) do {
+    //NATO
     case "alpha":     { [(call TFAR_fnc_activeSwRadio), 0] call TFAR_fnc_setSwChannel; };
     case "bravo":     { [(call TFAR_fnc_activeSwRadio), 1] call TFAR_fnc_setSwChannel; };
     case "charlie":   { [(call TFAR_fnc_activeSwRadio), 2] call TFAR_fnc_setSwChannel; };
     case "delta":     { [(call TFAR_fnc_activeSwRadio), 3] call TFAR_fnc_setSwChannel; };
     case "echo":      { [(call TFAR_fnc_activeSwRadio), 4] call TFAR_fnc_setSwChannel; };
     case "foxtrot":   { [(call TFAR_fnc_activeSwRadio), 5] call TFAR_fnc_setSwChannel; };
+
+    case "goliath":   { [(call TFAR_fnc_activeSwRadio), 7] call TFAR_fnc_setSwChannel; };
+
+    //Russian
+    case "anna":     { [(call TFAR_fnc_activeSwRadio), 0] call TFAR_fnc_setSwChannel; };
+    case "boris":    { [(call TFAR_fnc_activeSwRadio), 1] call TFAR_fnc_setSwChannel; };
+    case "vasily":   { [(call TFAR_fnc_activeSwRadio), 2] call TFAR_fnc_setSwChannel; };
+    case "gregory":  { [(call TFAR_fnc_activeSwRadio), 3] call TFAR_fnc_setSwChannel; };
+    case "dmitri":   { [(call TFAR_fnc_activeSwRadio), 4] call TFAR_fnc_setSwChannel; };
+    case "yelena":   { [(call TFAR_fnc_activeSwRadio), 5] call TFAR_fnc_setSwChannel; };
   };
 };
 
