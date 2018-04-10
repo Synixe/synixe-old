@@ -2,7 +2,7 @@
 //adds visible breath in colder climates
 //breath frequency is adjusted according to fatigue, being hit and for sounds played by the player character (injury etc)
 //works with dynamically spawned units mid mission
-//breath will start to show below 8°C and be most prominent at -9°C
+//breath will start to show below 7.2°C and be most prominent at -9°C
 
 GOM_fnc_playerTemp = {
   params [
@@ -46,7 +46,7 @@ GOM_fnc_breathLoop = {
   while {alive _unit} do {
     if (!alive _unit) exitWith {false};
     waituntil {simulationEnabled _unit isEqualTo true};
-    waituntil {if (speed _unit > 10) exitWith {true};sleep 0.5; (_unit call GOM_fnc_playerTemp) < 8};
+    waituntil {if (speed _unit > 10) exitWith {true};sleep 0.5; (_unit call GOM_fnc_playerTemp) < 7.2};
     waituntil {if (speed _unit > 10) exitWith {true};sleep 0.5;((_unit getVariable ["GOM_fnc_eventBreath",-60]) + _sleep < time)};
     if (!alive _unit) exitWith {false};
     _cause = "";
@@ -98,7 +98,7 @@ GOM_fnc_visibleBreath = {
   _reference = ["BREATH","BREATHINJURED","INJURED","PULSATION","HITSCREAM","GASPING","STABILIZING","RECOVERED"];
   _allowed = [1,2,4,5,6,10,11,14];
   if !(_soundID in _allowed) exitWith {false};
-  if (_player_temp >= 8) exitWith {false};
+  if (_player_temp >= 7.2) exitWith {false};
   if (_soundID != 6) then {
     sleep 0.5;
   };

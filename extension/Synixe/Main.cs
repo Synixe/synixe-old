@@ -35,6 +35,8 @@ namespace Synixe
                     Data data = Data.GetData();
                     data.handlers = new DiscordRpc.EventHandlers();
 
+                    output.Append("Setup Done");
+
                     DiscordRpc.Initialize("411594868293500938", ref data.handlers, true, null);
                     break;
             }
@@ -54,6 +56,8 @@ namespace Synixe
                     data.presence.state             = args[1].Trim().Trim('"');  //Role
                     data.presence.largeImageKey     = args[2].Trim().Trim('"');  //Map engine name
                     data.presence.largeImageText    = args[3].Trim().Trim('"');  //Map friendly name
+
+                    output.Append("Updated");
 
                     DiscordRpc.UpdatePresence(ref data.presence);
                     break;

@@ -14,6 +14,18 @@
     {
       _roles = ["Police Officer","Armed Officer","Police Pilot","SWAT"];
     };
+    case 2: //Canada (Woodland)
+    {
+      _roles = ["Rifleman","Rifleman (AT)","Rifleman (LAT)","Autorifleman","Medic","Grenadier","Engineer"];
+    };
+    case 3: //Canada (Arid)
+    {
+      _roles = ["Rifleman","Rifleman (AT)","Rifleman (LAT)","Autorifleman","Medic","Grenadier","Engineer"];
+    };
+    case 4: //USAF Woodland
+    {
+      _roles = ["Rifleman","Rifleman (AT)","Rifleman (LAT)","Autorifleman","Medic","Grenadier","Engineer"];
+    };
   };
 
   _dialogResult = [

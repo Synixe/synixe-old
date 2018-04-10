@@ -15,3 +15,6 @@ PREP(tfar);
 
 //Server Side
 //PREP(zeus);
+
+//Tools
+PREP(dump);

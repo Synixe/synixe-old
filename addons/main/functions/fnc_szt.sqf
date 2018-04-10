@@ -25,17 +25,15 @@ player addEventHandler ["Respawn", {
   };
 }];
 
-[0, {
-  if (player isKindOf "B_Soldier_F") then { //Let Soldiers choose their role
-    _action = [
-      "RoleSelect",
-      "Select Role",
-      "",
-      {
-        player call FUNC(roleSelect);
-      },
-      {(missionNamespace getVariable "SZT_FACTION") != -1}
-    ] call ace_interact_menu_fnc_createAction;
-    [setup_flag, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
-  }
-}] call CBA_fnc_globalExecute;
+if (player isKindOf "B_Soldier_F") then { //Let Soldiers choose their role
+  _action = [
+    "RoleSelect",
+    "Select Role",
+    "",
+    {
+      player call FUNC(roleSelect);
+    },
+    {(missionNamespace getVariable "SZT_FACTION") != -1}
+  ] call ace_interact_menu_fnc_createAction;
+  [setup_flag, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+}
