@@ -1,13 +1,13 @@
 # Synixe
 
 ## Features
-* Automatic Zeus Setup
 * Automatic TFAR Frequency Setup
 * Automatic TFAR Channel Switching for Squads
 * Adds Discord Rich Presence
 * Adds ACE Earplugs to all players
 * Adds Faction Selection for Zeus Templates
 * Adds a foggy breath effect to all maps when below 7.2 degrees
+* Disables GPS Minimap
 
 ## Modules
 * Change Loadout - Set the loadout from a list of Synixe Factions
