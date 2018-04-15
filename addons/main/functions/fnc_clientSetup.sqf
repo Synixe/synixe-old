@@ -8,11 +8,23 @@ if (missionName == "SZTv2") then {
 
 call FUNC(setFace);
 
+player addEventHandler ["Respawn", {
+  [] spawn {
+    [true] call ace_spectator_fnc_setSpectator;
+    [] spawn {
+      while {true} do {
+        _ctrl = (findDisplay 49) displayCtrl 1010;
+        _ctrl ctrlEnable false;
+        sleep 0.5;
+      };
+    }
+  };
+}];
+
 //Disable BIS Revive
 player setVariable ["BIS_revive_disableRevive",false];
 
-if (player isKindOf "CABaseMan") then {
-  //Start with safety on
+if (side player != sideLogic) then {
   [player, currentWeapon player, currentMuzzle player] call ace_safemode_fnc_lockSafety;
 };
 

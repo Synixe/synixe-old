@@ -18,13 +18,6 @@ if (missionNamespace getVariable "SZT_FACTION" != -1) then {
   [player, missionNamespace getVariable "SZT_FACTION"] call FUNC(loadout);
 };
 
-player addEventHandler ["Respawn", {
-  [] spawn {
-    sleep 1;
-    [true] call ace_spectator_fnc_setSpectator;
-  };
-}];
-
 if (player isKindOf "B_Soldier_F") then { //Let Soldiers choose their role
   _action = [
     "RoleSelect",

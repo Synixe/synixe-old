@@ -1,32 +1,57 @@
 if (call TFAR_fnc_haveSWRadio) then {
-  [(call TFAR_fnc_activeSwRadio), 1, "31"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeSwRadio), 2, "32"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeSwRadio), 3, "33"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeSwRadio), 4, "34"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeSwRadio), 5, "35"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeSwRadio), 6, "36"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeSwRadio), 7, "30"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeSwRadio), 8, "40"] call TFAR_fnc_setChannelFrequency;
 
-  switch (toLower(groupId(group player))) do {
+  _radio = call TFAR_fnc_activeSwRadio;
+  _major = "40";
+
+  [_radio, 1, "31"] call TFAR_fnc_setChannelFrequency;
+  [_radio, 2, "32"] call TFAR_fnc_setChannelFrequency;
+  [_radio, 3, "33"] call TFAR_fnc_setChannelFrequency;
+  [_radio, 4, "34"] call TFAR_fnc_setChannelFrequency;
+  [_radio, 5, "35"] call TFAR_fnc_setChannelFrequency;
+  [_radio, 6, "36"] call TFAR_fnc_setChannelFrequency;
+  [_radio, 7, "30"] call TFAR_fnc_setChannelFrequency;
+  [_radio, 8, "40"] call TFAR_fnc_setChannelFrequency;
+
+  _group = toLower (groupId ( group player)) splitString " ";
+
+  switch (_group select 0) do {
     //NATO
-    case "alpha":     { [(call TFAR_fnc_activeSwRadio), 0] call TFAR_fnc_setSwChannel; };
-    case "bravo":     { [(call TFAR_fnc_activeSwRadio), 1] call TFAR_fnc_setSwChannel; };
-    case "charlie":   { [(call TFAR_fnc_activeSwRadio), 2] call TFAR_fnc_setSwChannel; };
-    case "delta":     { [(call TFAR_fnc_activeSwRadio), 3] call TFAR_fnc_setSwChannel; };
-    case "echo":      { [(call TFAR_fnc_activeSwRadio), 4] call TFAR_fnc_setSwChannel; };
-    case "foxtrot":   { [(call TFAR_fnc_activeSwRadio), 5] call TFAR_fnc_setSwChannel; };
+    case "alpha":     { [_radio, 0] call TFAR_fnc_setSwChannel; _major = "31"; };
+    case "bravo":     { [_radio, 1] call TFAR_fnc_setSwChannel; _major = "32"; };
+    case "charlie":   { [_radio, 2] call TFAR_fnc_setSwChannel; _major = "33"; };
+    case "delta":     { [_radio, 3] call TFAR_fnc_setSwChannel; _major = "34"; };
+    case "echo":      { [_radio, 4] call TFAR_fnc_setSwChannel; _major = "35"; };
+    case "foxtrot":   { [_radio, 5] call TFAR_fnc_setSwChannel; _major = "36"; };
 
-    case "goliath":   { [(call TFAR_fnc_activeSwRadio), 7] call TFAR_fnc_setSwChannel; };
+    case "goliath":   { [_radio, 7] call TFAR_fnc_setSwChannel; _major = "40"; };
 
     //Russian
-    case "anna":     { [(call TFAR_fnc_activeSwRadio), 0] call TFAR_fnc_setSwChannel; };
-    case "boris":    { [(call TFAR_fnc_activeSwRadio), 1] call TFAR_fnc_setSwChannel; };
-    case "vasily":   { [(call TFAR_fnc_activeSwRadio), 2] call TFAR_fnc_setSwChannel; };
-    case "gregory":  { [(call TFAR_fnc_activeSwRadio), 3] call TFAR_fnc_setSwChannel; };
-    case "dmitri":   { [(call TFAR_fnc_activeSwRadio), 4] call TFAR_fnc_setSwChannel; };
-    case "yelena":   { [(call TFAR_fnc_activeSwRadio), 5] call TFAR_fnc_setSwChannel; };
+    case "anna":     { [_radio, 0] call TFAR_fnc_setSwChannel; _major = "31"; };
+    case "boris":    { [_radio, 1] call TFAR_fnc_setSwChannel; _major = "32"; };
+    case "vasily":   { [_radio, 2] call TFAR_fnc_setSwChannel; _major = "33"; };
+    case "gregory":  { [_radio, 3] call TFAR_fnc_setSwChannel; _major = "34"; };
+    case "dmitri":   { [_radio, 4] call TFAR_fnc_setSwChannel; _major = "35"; };
+    case "yelena":   { [_radio, 5] call TFAR_fnc_setSwChannel; _major = "36"; };
   };
+
+  if (count _group == 2) then {
+    _minor = _group select 1;
+
+    [_radio, 7] call TFAR_fnc_setSwChannel;
+
+    if (leader group player == player) then {
+      [_radio, (call TFAR_fnc_getSwChannel)] call TFAR_fnc_setAdditionalSwChannel;
+
+      [_radio, 8, (format ["%1.%2", _major, _minor])] call TFAR_fnc_setChannelFrequency;
+
+      [_radio, 1] call TFAR_fnc_setSwStereo;
+      [_radio, 2] call TFAR_fnc_setAdditionalSwStereo;
+    } else {
+      [_radio, 8, (format ["%1.%2", _major, _minor])] call TFAR_fnc_setChannelFrequency;
+    };
+
+  };
+
 };
 
 if (call TFAR_fnc_haveLRRadio) then {
@@ -40,5 +65,5 @@ if (call TFAR_fnc_haveLRRadio) then {
   [(call TFAR_fnc_activeLrRadio), 8, "40"] call TFAR_fnc_setChannelFrequency;
   [(call TFAR_fnc_activeLrRadio), 9, "41"] call TFAR_fnc_setChannelFrequency;
   //Set 30 active on LR by default
-  [call TFAR_fnc_activeLrRadio, 6] call TFAR_fnc_setLrChannel;
+  [(call TFAR_fnc_activeLrRadio), 6] call TFAR_fnc_setLrChannel;
 };
