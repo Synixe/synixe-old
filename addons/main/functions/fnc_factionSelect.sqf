@@ -10,7 +10,7 @@
   ] call Ares_fnc_showChooseDialog;
 
   if (_dialogResult isEqualTo []) exitWith {};
-  _faction = _dialogResult select 0;
+  private _faction = _dialogResult select 0;
 
   if (missionName == "SZTv2") then {
     missionNamespace setVariable ["SZT_FACTION", _faction, true];

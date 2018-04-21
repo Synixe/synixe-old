@@ -1,3 +1,19 @@
+/*
+ * Author: Brett
+ * Sets a unit loadout based on the faction passed
+ *
+ * Arguments:
+ * 0: _unit <OBJECT>
+ *
+ * Return Value:
+ * None
+ *
+ * Example:
+ * [player, 1] call synixe_main_fnc_loadout
+ *
+ * Public: Yes
+ */
+
 #include "script_component.hpp"
 
 params [
@@ -5,7 +21,7 @@ params [
   ["_faction", 0]
 ];
 
-_role = _unit getVariable ["SZT_ROLE", "Rifleman"];
+private _role = _unit getVariable ["SZT_ROLE", "Rifleman"];
 
 switch (_faction) do {
   case 0: //NATO

@@ -1,4 +1,18 @@
-//Gives the unit earplugs if they don't already have them
+/*
+ * Author: Brett
+ * Give ACE_EarPlugs to a unit if they don't already have them
+ *
+ * Arguments:
+ * 0: unit <OBJECT>
+ *
+ * Return Value:
+ * None
+ *
+ * Example:
+ * player call synixe_main_fnc_earplugs
+ *
+ * Public: Yes
+ */
 
 if (!("ACE_EarPlugs" in (items _this))) then {
   _this addItem "ACE_EarPlugs";

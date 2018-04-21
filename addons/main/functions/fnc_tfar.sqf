@@ -1,7 +1,24 @@
+/*
+ * Author: Brett
+ * Setup the player's radios
+ *
+ * Arguments:
+ * None
+ *
+ * Return Value:
+ * None
+ *
+ * Example:
+ * 0 call synixe_main_fnc_tfar
+ *
+ * Public: Yes
+ */
+
 if (call TFAR_fnc_haveSWRadio) then {
 
-  _radio = call TFAR_fnc_activeSwRadio;
-  _major = "40";
+  private _radio = call TFAR_fnc_activeSwRadio;
+  private _major = "40";
+  private _group = toLower (groupId ( group player)) splitString " ";
 
   [_radio, 1, "31"] call TFAR_fnc_setChannelFrequency;
   [_radio, 2, "32"] call TFAR_fnc_setChannelFrequency;
@@ -11,8 +28,6 @@ if (call TFAR_fnc_haveSWRadio) then {
   [_radio, 6, "36"] call TFAR_fnc_setChannelFrequency;
   [_radio, 7, "30"] call TFAR_fnc_setChannelFrequency;
   [_radio, 8, "40"] call TFAR_fnc_setChannelFrequency;
-
-  _group = toLower (groupId ( group player)) splitString " ";
 
   switch (_group select 0) do {
     //NATO
@@ -35,9 +50,7 @@ if (call TFAR_fnc_haveSWRadio) then {
   };
 
   if (count _group == 2) then {
-    _minor = _group select 1;
-
-    [_radio, 7] call TFAR_fnc_setSwChannel;
+    private _minor = _group select 1;
 
     if (leader group player == player) then {
       [_radio, (call TFAR_fnc_getSwChannel)] call TFAR_fnc_setAdditionalSwChannel;
@@ -50,6 +63,7 @@ if (call TFAR_fnc_haveSWRadio) then {
       [_radio, 8, (format ["%1.%2", _major, _minor])] call TFAR_fnc_setChannelFrequency;
     };
 
+    [_radio, 7] call TFAR_fnc_setSwChannel;
   };
 
 };

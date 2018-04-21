@@ -88,7 +88,7 @@ if (isNull _unitUnderCursor) then
 if (isNil "_units") exitWith {};
 if (_units isEqualTo []) exitWith {};
 
-_count = count _units;
+private _count = count _units;
 
 while {count _units > 0} do
 {

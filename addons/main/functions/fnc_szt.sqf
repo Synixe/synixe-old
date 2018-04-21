@@ -19,7 +19,7 @@ if (missionNamespace getVariable "SZT_FACTION" != -1) then {
 };
 
 if (player isKindOf "B_Soldier_F") then { //Let Soldiers choose their role
-  _action = [
+  private _action = [
     "RoleSelect",
     "Select Role",
     "",

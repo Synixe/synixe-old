@@ -2,8 +2,8 @@
 //"synixe" callExtension ["setup", [getPlayerUID player]];
 if (hasInterface) then {
   "synixe" callExtension "setup";
-  _role = "http://synixe.com";
-  _mission = "";
+  private _role = "http://synixe.com";
+  private _mission = "";
   if (isServer) then {
     _mission = "Editing Missions";
   } else {
@@ -17,7 +17,11 @@ if (hasInterface) then {
       _mission = briefingName;
     };
   };
-  _map = worldName;
-  _worldName = getText (configfile >> "CfgWorlds" >> worldname >> "description");
-  "synixe" callExtension ["update", [_mission, _role, toLower(_map), _worldName]];
+  "synixe" callExtension [
+    "update",
+    [
+      _mission, _role, toLower(worldName),
+      getText (configfile >> "CfgWorlds" >> worldname >> "description")
+    ]
+  ];
 };

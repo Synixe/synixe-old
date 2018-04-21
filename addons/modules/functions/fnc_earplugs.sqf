@@ -36,8 +36,7 @@ if (isNull _unitUnderCursor) then
     case 3:
     {
       private _side_index = _dialogResult select 2;
-      _side = [east,west,independent,civilian] select (_side_index - 1);
-      allPlayers select {(alive _x) and (side _x == _side)};
+      allPlayers select {(alive _x) and (side _x == [east,west,independent,civilian] select (_side_index - 1))};
     };
     case 4:
     {

@@ -2,8 +2,8 @@
 
 [] spawn {
 
-  _dialogResult = nil;
-  _roles = [];
+  private _dialogResult = nil;
+  private _roles = [];
 
   switch (missionNamespace getVariable "SZT_FACTION") do {
     case 0: //NATO (Vanilla)
@@ -36,9 +36,8 @@
   ] call Ares_fnc_showChooseDialog;
 
   if (_dialogResult isEqualTo []) exitWith {};
-  _role = _roles select (_dialogResult select 0);
 
-  player setVariable ["SZT_ROLE", _role];
+  player setVariable ["SZT_ROLE", _roles select (_dialogResult select 0)];
 
   [player, missionNamespace getVariable "SZT_FACTION"] call FUNC(loadout);
 
