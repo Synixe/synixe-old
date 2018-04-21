@@ -1,7 +1,6 @@
 #include "script_component.hpp"
 
 if (isServer) then {
-  missionnamespace setVariable ["SZT_test", "lol", true];
   if (missionName == "SZTv2") then {
     missionNamespace setVariable ["SZT_FACTION", -1, true];
   } else {
