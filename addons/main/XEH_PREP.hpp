@@ -18,3 +18,4 @@ PREP(tfar);
 
 //Tools
 PREP(dump);
+PREP(screenshot);

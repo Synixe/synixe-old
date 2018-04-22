@@ -44,7 +44,7 @@ player addEventHandler ["Respawn", {
 }] call CBA_fnc_addEventHandler;
 
 //Disable BIS Revive
-player setVariable ["BIS_revive_disableRevive",false];
+player setVariable ["BIS_revive_disableRevive",true];
 
 if (side player != sideLogic) then {
   [player, currentWeapon player, currentMuzzle player] call ace_safemode_fnc_lockSafety;

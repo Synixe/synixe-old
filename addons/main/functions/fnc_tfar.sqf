@@ -51,6 +51,9 @@ if (call TFAR_fnc_haveSWRadio) then {
 
   if (count _group == 2) then {
     private _minor = _group select 1;
+    if (_minor find "-" != -1) then {
+      _minor = (_minor splitString "-") select 0;
+    };
 
     if (leader group player == player) then {
       [_radio, (call TFAR_fnc_getSwChannel)] call TFAR_fnc_setAdditionalSwChannel;
@@ -64,6 +67,27 @@ if (call TFAR_fnc_haveSWRadio) then {
     };
 
     [_radio, 7] call TFAR_fnc_setSwChannel;
+
+    0 spawn {
+      private _group = group player;
+      {
+        if (side _group == side _x) then {
+          private _parent = _x;
+          private _name = (groupId _group) splitString " ";
+          private _root = _name select 0;
+          if (_root == groupId _x && {(_name select 1) find "-" == -1}) then {
+            [player] joinSilent _parent;
+            sleep 0.2;
+            switch (_name select 1) do {
+              case "1": { [player, "RED"] call ace_interaction_fnc_joinTeam; };
+              case "2": { [player, "GREEN"] call ace_interaction_fnc_joinTeam; };
+              case "3": { [player, "BLUE"] call ace_interaction_fnc_joinTeam; };
+              case "4": { [player, "YELLOW"] call ace_interaction_fnc_joinTeam; };
+            };
+          };
+        };
+      } forEach allGroups;
+    };
   };
 
 };

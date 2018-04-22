@@ -1,6 +1,10 @@
 using DiscordRpcDemo;
+using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
+//using WindowsInput;
+//using WindowsInput.Native;
 
 namespace Synixe
 {
@@ -18,6 +22,7 @@ namespace Synixe
 
     public class Main
     {
+
         [DllExport("RVExtensionVersion", CallingConvention = CallingConvention.Winapi)]
         public static void RVExtensionVersion(StringBuilder output, int outputSize)
         {
@@ -38,6 +43,12 @@ namespace Synixe
                     output.Append("Setup Done");
 
                     DiscordRpc.Initialize("411594868293500938", ref data.handlers, true, null);
+                    break;
+                case "screenshot":
+                    //InputSimulator s = new InputSimulator();
+                    //s.Keyboard.KeyPress(VirtualKeyCode.F12);
+                    Keyboard k = new Keyboard();
+                    k.Send(Keyboard.ScanCodeShort.F12);
                     break;
             }
         }
