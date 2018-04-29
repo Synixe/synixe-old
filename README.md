@@ -8,6 +8,7 @@
 * Adds Faction Selection for Zeus Templates
 * Adds a foggy breath effect to all maps when below 7.2 degrees
 * Disables GPS Minimap
+* Corrects temperatures on Winter maps
 
 ## Modules
 * Change Loadout - Set the loadout from a list of Synixe Factions

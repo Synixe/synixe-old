@@ -21,6 +21,11 @@ if (missionName == "SZTv2") then {
 
 call FUNC(setFace);
 
+private _position = parseNumber(([[str player, count(toArray(str group player))+1] call BIS_fnc_trimString, " "] call BIS_fnc_splitString) select 0);
+player setVariable ["SGC_SQUAD_POSITION", _position, true];
+player setVariable ["SGC_SQUAD", groupId group player, true];
+player setVariable ["SGC_FIRETEAM", ((groupId group player) splitString " " select 1) splitString "-" select 0, true];
+
 player addEventHandler ["Respawn", {
   [] spawn {
     [true] call ace_spectator_fnc_setSpectator;

@@ -4,7 +4,6 @@
   private _dialogResult = [
     "Select Faction",
     [
-      //["Faction",["NATO (Vanilla)","Canadian Woodland","Canadian Arid","Canadian Arctic","USAF Woodland","USAF Desert"]]
       ["Faction", ["NATO (Vanilla)", "Police", "Canada (Woodland)", "Canada (Arid)", "USAF Woodland"]]
     ]
   ] call Ares_fnc_showChooseDialog;

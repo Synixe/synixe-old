@@ -49,24 +49,7 @@ if (call TFAR_fnc_haveSWRadio) then {
     case "yelena":   { [_radio, 5] call TFAR_fnc_setSwChannel; _major = "36"; };
   };
 
-  if (count _group == 2) then {
-    private _minor = _group select 1;
-    if (_minor find "-" != -1) then {
-      _minor = (_minor splitString "-") select 0;
-    };
-
-    if (leader group player == player) then {
-      [_radio, (call TFAR_fnc_getSwChannel)] call TFAR_fnc_setAdditionalSwChannel;
-
-      [_radio, 8, (format ["%1.%2", _major, _minor])] call TFAR_fnc_setChannelFrequency;
-
-      [_radio, 1] call TFAR_fnc_setSwStereo;
-      [_radio, 2] call TFAR_fnc_setAdditionalSwStereo;
-    } else {
-      [_radio, 8, (format ["%1.%2", _major, _minor])] call TFAR_fnc_setChannelFrequency;
-    };
-
-    [_radio, 7] call TFAR_fnc_setSwChannel;
+  if (count _group == 2 && {(_group select 1) find "-" == -1}) then {
 
     0 spawn {
       private _group = group player;
@@ -88,6 +71,23 @@ if (call TFAR_fnc_haveSWRadio) then {
         };
       } forEach allGroups;
     };
+
+    private _minor = _group select 1;
+
+    if (player getVariable ["SGC_SQUAD_POSITION", "0"] == 1) then {
+      [_radio, (call TFAR_fnc_getSwChannel)] call TFAR_fnc_setAdditionalSwChannel;
+
+      [_radio, 8, (format ["%1.%2", _major, _minor])] call TFAR_fnc_setChannelFrequency;
+
+      [_radio, 1] call TFAR_fnc_setSwStereo;
+      [_radio, 2] call TFAR_fnc_setAdditionalSwStereo;
+    } else {
+      [_radio, 8, (format ["%1.%2", _major, _minor])] call TFAR_fnc_setChannelFrequency;
+    };
+
+    [_radio, 7] call TFAR_fnc_setSwChannel;
+  } else {
+    [_radio, 7] call TFAR_fnc_setSwChannel;
   };
 
 };
