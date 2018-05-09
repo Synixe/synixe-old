@@ -58,6 +58,7 @@ if (side player != sideLogic) then {
 [] spawn FUNC(disableChat);
 [] spawn FUNC(discord);
 [] spawn FUNC(breath);
+[] spawn FUNC(placeFix);
 
 [] spawn {
   sleep 8;

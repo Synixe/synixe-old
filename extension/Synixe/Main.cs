@@ -45,8 +45,6 @@ namespace Synixe
                     DiscordRpc.Initialize("411594868293500938", ref data.handlers, true, null);
                     break;
                 case "screenshot":
-                    //InputSimulator s = new InputSimulator();
-                    //s.Keyboard.KeyPress(VirtualKeyCode.F12);
                     Keyboard k = new Keyboard();
                     k.Send(Keyboard.ScanCodeShort.F12);
                     break;
