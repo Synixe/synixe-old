@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:latest-browsers
+
+    steps:
+      - checkout
+
+      - run: python3 tools/config_style_checker.py
+      - run: python3 tools/sqf_validator.py

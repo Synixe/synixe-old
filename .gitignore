@@ -13,4 +13,3 @@ DllExport.bat
 bin/
 obj/
 *.dll
-tools/

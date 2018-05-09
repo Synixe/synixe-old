@@ -20,7 +20,7 @@ waituntil {!isnull player};
 _currentUnit = player;
 //TODO see if this could be replaced with TFAR's currentunit
 ["unit", {
-	_currentUnit = (_this select 0);
+  _currentUnit = (_this select 0);
 }, true] call CBA_fnc_addPlayerEventHandler;
 
 //Define the variables along with their default values.
@@ -30,15 +30,15 @@ _strength = param [2, 100, [0]] - 1; // Minus one so that radio interference nev
 
 //compare distances between jammers and player to find nearest jammer and set it as _jammer
 _jammerDist = {
-	_jammer = objNull;
-	_closestDist = 1000000;
-	{
-		if (_x distance _currentUnit < _closestdist) then {
-			_jammer = _x;
-			_closestDist = _x distance _currentUnit;
-		};
-	} foreach _jammers;
-	_jammer;
+  _jammer = objNull;
+  _closestDist = 1000000;
+  {
+    if (_x distance _currentUnit < _closestdist) then {
+      _jammer = _x;
+      _closestDist = _x distance _currentUnit;
+    };
+  } foreach _jammers;
+  _jammer;
 };
 _jammer = call _jammerDist;
 
@@ -51,25 +51,25 @@ while {alive _jammer} do
   _interference = 1;
 
   if (_dist < _rad) then {
-	_interference = _strength - (_distPercent * _strength) + 1;
+    _interference = _strength - (_distPercent * _strength) + 1;
   };
   // Set the TF receiving and transmitting distance multipliers
   _currentUnit setVariable ["tf_receivingDistanceMultiplicator", _interference];
-	//_currentUnit setVariable ["tf_transmittingDistanceMultiplicator", _interference];
+  //_currentUnit setVariable ["tf_transmittingDistanceMultiplicator", _interference];
 
   // Sleep 3 seconds before running again
   sleep 3.0;
 
-	//Only run this if there are multiple jammers.
-	if (count _jammers > 1) then {
-		//Check if all of the jammers are still alive. If not, remove it from _jammers.
-		{
-			if (!alive _x AND count _jammers > 1) then {_jammers = _jammers - [_x]};
-		} foreach _jammers;
+  //Only run this if there are multiple jammers.
+  if (count _jammers > 1) then {
+    //Check if all of the jammers are still alive. If not, remove it from _jammers.
+    {
+      if (!alive _x AND count _jammers > 1) then {_jammers = _jammers - [_x]};
+    } foreach _jammers;
 
-		//Check for closest jammer
-		_jammer = call _jammerDist;
-	};
+    //Check for closest jammer
+    _jammer = call _jammerDist;
+  };
 };
 
 //Set TFR settings back to normal before exiting the script
