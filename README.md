@@ -9,10 +9,15 @@
 * Adds a foggy breath effect to all maps when below 7.2 degrees
 * Disables GPS Minimap
 * Corrects temperatures on Winter maps
+* Placing units on roofs and carriers
 
-## Modules
+## Zeus Modules
 * Change Loadout - Set the loadout from a list of Synixe Factions
 * Give Earplugs - Gives a unit ACE Earplugs
+
+## Mission Making Scripts
+* TFAR Radio Jammer
+* Instant Vehicle Wreck
 
 ## License
 The Synixe Mod for Arma 3 is licensed under the GNU General Public License version 3.  
