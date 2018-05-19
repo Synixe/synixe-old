@@ -57,7 +57,7 @@ if sys.platform == "win32":
     import winreg
 
 ######## GLOBALS #########
-project = "@synixe
+project = "@synixe"
 project_version = "3.0.0"
 arma3tools_path = ""
 work_drive = ""
@@ -66,10 +66,10 @@ make_root = ""
 release_dir = ""
 module_root_parent = ""
 optionals_root = ""
-key_name = "synixe
+key_name = "synixe"
 key = ""
 dssignfile = ""
-prefix = "synixe
+prefix = "synixe"
 pbo_name_prefix = "synixe"
 signature_blacklist = []
 importantFiles = ["mod.cpp", "README.md", "AUTHORS.txt", "LICENSE", "logo_synixeca.paa"]
