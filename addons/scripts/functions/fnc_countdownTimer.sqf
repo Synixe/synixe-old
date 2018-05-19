@@ -1,93 +1,93 @@
 /*
-	Author: Josef Zemanek
-	Edited by: Kalthramis
+  Author: Josef Zemanek
+  Edited by: Kalthramis
 
-	Description:
-	Timer, as used in Firing Drills and VR Training
+  Description:
+  Timer, as used in Firing Drills and VR Training
 
-	Parameter(s):
-		0: INT - Timer duration in seconds
+  Parameter(s):
+  0: INT - Timer duration in seconds
 
-		1: STRING (Optional) - Timer colour in HTML format
+  1: STRING (Optional) - Timer colour in HTML format
 
-		Defaults is white.
-		If "#CC8000", overwrites to white for time being.
-		For BlueFor Dialogue Blue: "#00ccff"
+  Defaults is white.
+  If "#CC8000", overwrites to white for time being.
+  For BlueFor Dialogue Blue: "#00ccff"
 
-		suggested:
-			waitUntil { scriptDone "synixe_fnc_countdownTimer.sqf" };
+  suggested:
+  waitUntil { scriptDone "synixe_fnc_countdownTimer.sqf" };
 
-	Public: Yes
+  Public: Yes
 
-	Returns:
-	true
+  Returns:
+  true
 
-	[300, "#00ccff"] spawn synixe_scripts_fnc_countdownTimer;
+  [300, "#00ccff"] spawn synixe_scripts_fnc_countdownTimer;
 */
 
 _color = _this param [1,(["IGUI", "WARNING_RGB"] call BIS_fnc_displayColorGet) call BIS_fnc_colorRGBtoHTML,[""]];
 
 //Default color is white
 if(_color == "#CC8000") then {
-	_color = "#FFFFFF";
+  _color = "#FFFFFF";
 };
 
 _startTime = _this param [0];
 BIS_stopTimer = FALSE;
 RscFiringDrillTime_done = FALSE;
 if (isNil "BIS_interruptable") then {
-	BIS_interruptable = TRUE;
+  BIS_interruptable = TRUE;
 };
 
 1 cutRsc ["RscFiringDrillTime", "PLAIN"];
 
 if(isMultiplayer) then
 {
-	 _startTime = _startTime + serverTime;
+   _startTime = _startTime + serverTime;
 
-	while {(_startTime - serverTime) > 0} do {
-		_t = _startTime - serverTime;
-		_timeNowFormat = [_t, "MM:SS.MS", TRUE] call BIS_fnc_secondsToString;
-		_text = "<t align='left' color='" + _color + "'>";
+  while {(_startTime - serverTime) > 0} do {
+  _t = _startTime - serverTime;
+  _timeNowFormat = [_t, "MM:SS.MS", TRUE] call BIS_fnc_secondsToString;
+  _text = "<t align='left' color='" + _color + "'>";
 
-		_textCurrent = "";
-		_colorCurrent = _color;
-		_iconCurrent = "A3\Modules_F_Beta\data\FiringDrills\timer_ca";
+  _textCurrent = "";
+  _colorCurrent = _color;
+  _iconCurrent = "A3\Modules_F_Beta\data\FiringDrills\timer_ca";
 
-		_textCurrent = _textCurrent + "<img image='" + _iconCurrent + "' /> ";
-		_textCurrent = _textCurrent + (format ["%1:%2<t size='0.8'>.%3</t>", _timeNowFormat select 0, _timeNowFormat select 1, _timeNowFormat select 2]);
-		_textCurrent = _textCurrent + "</t>";
+  _textCurrent = _textCurrent + "<img image='" + _iconCurrent + "' /> ";
+  _textCurrent = _textCurrent + (format ["%1:%2<t size='0.8'>.%3</t>", _timeNowFormat select 0, _timeNowFormat select 1, _timeNowFormat select 2]);
+  _textCurrent = _textCurrent + "</t>";
 
-		_text  = _text + _textCurrent;
+  _text  = _text + _textCurrent;
 
-		RscFiringDrillTime_current = parseText _text;
+  RscFiringDrillTime_current = parseText _text;
 
-		sleep 0.01;
-	};
+  sleep 0.01;
+  };
 }
 else
 {
-	 _startTime = _startTime + time;
+   _startTime = _startTime + time;
 
-	while {(_startTime - time) > 0} do {
-		_t = _startTime - time;
-		_timeNowFormat = [_t, "MM:SS.MS", TRUE] call BIS_fnc_secondsToString;
-		_text = "<t align='left' color='" + _color + "'>";
+  while {(_startTime - time) > 0} do {
+  _t = _startTime - time;
+  _timeNowFormat = [_t, "MM:SS.MS", TRUE] call BIS_fnc_secondsToString;
+  _text = "<t align='left' color='" + _color + "'>";
 
-		_textCurrent = "";
-		_colorCurrent = _color;
-		_iconCurrent = "A3\Modules_F_Beta\data\FiringDrills\timer_ca";
+  _textCurrent = "";
+  _colorCurrent = _color;
+  _iconCurrent = "A3\Modules_F_Beta\data\FiringDrills\timer_ca";
 
-		_textCurrent = _textCurrent + "<img image='" + _iconCurrent + "' /> ";
-		_textCurrent = _textCurrent + (format ["%1:%2<t size='0.8'>.%3</t>", _timeNowFormat select 0, _timeNowFormat select 1, _timeNowFormat select 2]);
-		_textCurrent = _textCurrent + "</t>";
+  _textCurrent = _textCurrent + "<img image='" + _iconCurrent + "' /> ";
+  _textCurrent = _textCurrent + (format ["%1:%2<t size='0.8'>.%3</t>", _timeNowFormat select 0, _timeNowFormat select 1, _timeNowFormat select 2]);
+  _textCurrent = _textCurrent + "</t>";
 
-		_text  = _text + _textCurrent;
+  _text  = _text + _textCurrent;
 
-		RscFiringDrillTime_current = parseText _text;
+  RscFiringDrillTime_current = parseText _text;
 
-		sleep 0.01;
-	};
+  sleep 0.01;
+  };
 };
 sleep 1;
 
