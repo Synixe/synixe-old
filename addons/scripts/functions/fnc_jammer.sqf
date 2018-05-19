@@ -17,21 +17,21 @@ Example: jamRadios = [[JAMMER],500] execVM "TFARjamRadios.sqf";
 if (!hasInterface) exitwith {};
 waituntil {!isnull player};
 
-_currentUnit = player;
+private _currentUnit = player;
 //TODO see if this could be replaced with TFAR's currentunit
 ["unit", {
   _currentUnit = (_this select 0);
 }, true] call CBA_fnc_addPlayerEventHandler;
 
 //Define the variables along with their default values.
-_jammers = param [0, [objNull], [[objNull]]];
-_rad = param [1, 1000, [0]];
-_strength = param [2, 100, [0]] - 1; // Minus one so that radio interference never goes below 1 near the edge of the radius (which is the default for TFAR).
+private _jammers = param [0, [objNull], [[objNull]]];
+private _rad = param [1, 1000, [0]];
+private _strength = param [2, 100, [0]] - 1; // Minus one so that radio interference never goes below 1 near the edge of the radius (which is the default for TFAR).
 
 //compare distances between jammers and player to find nearest jammer and set it as _jammer
-_jammerDist = {
-  _jammer = objNull;
-  _closestDist = 1000000;
+private _jammerDist = {
+  private _jammer = objNull;
+  private _closestDist = 1000000;
   {
     if (_x distance _currentUnit < _closestdist) then {
       _jammer = _x;
@@ -40,18 +40,17 @@ _jammerDist = {
   } foreach _jammers;
   _jammer;
 };
-_jammer = call _jammerDist;
+private _jammer = call _jammerDist;
 
 // While the Jamming Vehicle is not destroyed, loop every 5 seconds
 while {alive _jammer} do
 {
   // Set variables
-  _dist = _currentUnit distance _jammer;
-  _distPercent = _dist / _rad;
-  _interference = 1;
+  private _dist = _currentUnit distance _jammer;
+  private _interference = 1;
 
   if (_dist < _rad) then {
-    _interference = _strength - (_distPercent * _strength) + 1;
+    _interference = _strength - ((_dist / _rad) * _strength) + 1;
   };
   // Set the TF receiving and transmitting distance multipliers
   _currentUnit setVariable ["tf_receivingDistanceMultiplicator", _interference];

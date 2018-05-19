@@ -27,7 +27,6 @@ if (call TFAR_fnc_haveSWRadio) then {
   [_radio, 5, "35"] call TFAR_fnc_setChannelFrequency;
   [_radio, 6, "36"] call TFAR_fnc_setChannelFrequency;
   [_radio, 7, "30"] call TFAR_fnc_setChannelFrequency;
-  [_radio, 8, "40"] call TFAR_fnc_setChannelFrequency;
 
   switch (_group select 0) do {
     //NATO
@@ -40,6 +39,14 @@ if (call TFAR_fnc_haveSWRadio) then {
 
     case "goliath":   { [_radio, 7] call TFAR_fnc_setSwChannel; _major = "40"; };
 
+    //Jets Freq. 51
+    case "cougar":    { [_radio, 7] call TFAR_fnc_setSwChannel; _major = "51"; }; //CF-18 CFB Cold Lake
+    case "torch":     { [_radio, 7] call TFAR_fnc_setSwChannel; _major = "51"; }; //F-22 Joint Base Langley–Eustis
+
+    //C130 52
+    case "atlas":     { [_radio, 7] call TFAR_fnc_setSwChannel; _major = "52"; }; //CC-130H CFB Winnipeg
+    case "viking":    { [_radio, 7] call TFAR_fnc_setSwChannel; _major = "52"; }; //C-130 934th Airlift Wing
+
     //Russian
     case "anna":     { [_radio, 0] call TFAR_fnc_setSwChannel; _major = "31"; };
     case "boris":    { [_radio, 1] call TFAR_fnc_setSwChannel; _major = "32"; };
@@ -49,8 +56,9 @@ if (call TFAR_fnc_haveSWRadio) then {
     case "yelena":   { [_radio, 5] call TFAR_fnc_setSwChannel; _major = "36"; };
   };
 
-  if (count _group == 2 && {(_group select 1) find "-" == -1}) then {
+  [_radio, 8, _major] call TFAR_fnc_setChannelFrequency;
 
+  if (count _group == 2 && {(_group select 1) find "-" == -1}) then {
     0 spawn {
       private _group = group player;
       {

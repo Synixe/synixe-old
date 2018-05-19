@@ -4,7 +4,6 @@ private _unitUnderCursor = [_logic, false] call Ares_fnc_GetUnitUnderCursor;
 private _units = [];
 
 private _faction = 0;
-private _role = 0;
 
 //TODO Add Roles
 
@@ -41,7 +40,7 @@ if (isNull _unitUnderCursor) then
     case 3:
     {
       private _side_index = _dialogResult select 2;
-      _side = [east,west,independent,civilian] select (_side_index - 1);
+      private _side = [east,west,independent,civilian] select (_side_index - 1);
       allPlayers select {(alive _x) and (side _x == _side)};
     };
     case 4:

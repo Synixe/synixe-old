@@ -18,7 +18,7 @@
 //TODO I am not sure what will happen to the occupants of the vehicle yet
 
 params [
-  ["_veh"],
+  ["_veh", objNull],
   ["_sim", true]
 ];
 
