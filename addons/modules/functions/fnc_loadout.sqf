@@ -92,7 +92,7 @@ private _count = count _units;
 while {count _units > 0} do
 {
   private _unit = _units select 0;
-  [_unit, _faction, false] call synixe_main_fnc_loadout;
+  [_unit, _faction, false] call synixe_common_fnc_loadout;
   _units = _units - [_unit];
 };
 

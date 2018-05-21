@@ -1,18 +1,20 @@
 /*
-Jam Radios script for TFAR created by Asherion and Rebel
-Version 0.1.0
-Available from: https://forums.bistudio.com/forums/topic/203810-release-radio-jamming-script-for-task-force-radio/
-
-This script will jam radios for all players within a given radius of a jamming vehicle
-Jamming is stronger nearer to the vehicle, while less strong at the edges of the radius
-NOTE: It is recommended to call this script from initPlayerLocal.sqf if you want to run the script from mission start.
-
-Parameter(s):
-0: ARRAY of object(s) (Required)- Entity(s) that will cause the radios to be jammed.
-1: NUMBER (Optional)- Range of the jammer in Meters. Default is 1000.
-2: NUMBER (Optional)- Strength of the jammer. Default is 100.
-Example: jamRadios = [[JAMMER],500] execVM "TFARjamRadios.sqf";
-*/
+ * Author: Asherion and Rebel
+ * This script will jam radios for all players within a given radius of a jamming object
+ *
+ * Arguments:
+ * 0: _jammers [<OBJECT>]
+ * 1: _radius <NUMBER> - Radius of jamming, default 1000
+ * 2: _strength <NUMBER> - Strength of jamming, default 100
+ *
+ * Return Value:
+ * Return Name <TYPE>
+ *
+ * Example:
+ * ["example"] call ace_[module]_fnc_[functionName]
+ *
+ * Public: [Yes/No]
+ */
 
 if (!hasInterface) exitwith {};
 waituntil {!isnull player};
@@ -25,7 +27,7 @@ private _currentUnit = player;
 
 //Define the variables along with their default values.
 private _jammers = param [0, [objNull], [[objNull]]];
-private _rad = param [1, 1000, [0]];
+private _radius = param [1, 1000, [0]];
 private _strength = param [2, 100, [0]] - 1; // Minus one so that radio interference never goes below 1 near the edge of the radius (which is the default for TFAR).
 
 //compare distances between jammers and player to find nearest jammer and set it as _jammer
@@ -49,8 +51,8 @@ while {alive _jammer} do
   private _dist = _currentUnit distance _jammer;
   private _interference = 1;
 
-  if (_dist < _rad) then {
-    _interference = _strength - ((_dist / _rad) * _strength) + 1;
+  if (_dist < _radius) then {
+    _interference = _strength - ((_dist / _radius) * _strength) + 1;
   };
   // Set the TF receiving and transmitting distance multipliers
   _currentUnit setVariable ["tf_receivingDistanceMultiplicator", _interference];

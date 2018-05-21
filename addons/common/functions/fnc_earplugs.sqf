@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * player call synixe_main_fnc_earplugs
+ * player call synixe_common_fnc_earplugs
  *
  * Public: Yes
  */

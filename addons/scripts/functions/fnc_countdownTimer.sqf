@@ -6,33 +6,25 @@
   Timer, as used in Firing Drills and VR Training
 
   Parameter(s):
-  0: INT - Timer duration in seconds
+  0: _time <NUMBER> - Amount of time to put on the timer
+  1: _color <STRING> (Optional) - Timer colour in HEX format
 
-  1: STRING (Optional) - Timer colour in HTML format
-
-  Defaults is white.
-  If "#CC8000", overwrites to white for time being.
+  Default color is white.
   For BlueFor Dialogue Blue: "#00ccff"
-
-  suggested:
-  waitUntil { scriptDone "synixe_fnc_countdownTimer.sqf" };
 
   Public: Yes
 
   Returns:
-  true
+  True
 
   [300, "#00ccff"] spawn synixe_scripts_fnc_countdownTimer;
 */
 
-private _color = _this param [1,(["IGUI", "WARNING_RGB"] call BIS_fnc_displayColorGet) call BIS_fnc_colorRGBtoHTML,[""]];
+params [
+  ["_time", ""],
+  ["_color", "#FFFFFF"]
+];
 
-//Default color is white
-if(_color == "#CC8000") then {
-  _color = "#FFFFFF";
-};
-
-private _startTime = _this param [0];
 BIS_stopTimer = FALSE;
 RscFiringDrillTime_done = FALSE;
 if (isNil "BIS_interruptable") then {
@@ -43,7 +35,7 @@ if (isNil "BIS_interruptable") then {
 
 if(isMultiplayer) then
 {
-   _startTime = _startTime + serverTime;
+   private _startTime = _time + serverTime;
 
   while {(_startTime - serverTime) > 0} do {
     private _t = _startTime - serverTime;
@@ -51,7 +43,6 @@ if(isMultiplayer) then
     private _text = "<t align='left' color='" + _color + "'>";
 
     private _textCurrent = "";
-    private _colorCurrent = _color;
     private _iconCurrent = "A3\Modules_F_Beta\data\FiringDrills\timer_ca";
 
     _textCurrent = _textCurrent + "<img image='" + _iconCurrent + "' /> ";
@@ -67,7 +58,7 @@ if(isMultiplayer) then
 }
 else
 {
-   _startTime = _startTime + time;
+   private _startTime = _time + time;
 
   while {(_startTime - time) > 0} do {
     private _t = _startTime - time;
@@ -75,7 +66,6 @@ else
     private _text = "<t align='left' color='" + _color + "'>";
 
     private _textCurrent = "";
-    private _colorCurrent = _color;
     private _iconCurrent = "A3\Modules_F_Beta\data\FiringDrills\timer_ca";
 
     _textCurrent = _textCurrent + "<img image='" + _iconCurrent + "' /> ";

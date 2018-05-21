@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * 0 call synixe_main_fnc_tfar
+ * 0 call synixe_fireteams_fnc_tfar
  *
  * Public: Yes
  */
@@ -38,6 +38,8 @@ if (call TFAR_fnc_haveSWRadio) then {
     case "foxtrot":   { [_radio, 5] call TFAR_fnc_setSwChannel; _major = "36"; };
 
     case "goliath":   { [_radio, 7] call TFAR_fnc_setSwChannel; _major = "40"; };
+
+    //Generic Support will be 50, but does not have any defined callsigns
 
     //Jets Freq. 51
     case "cougar":    { [_radio, 7] call TFAR_fnc_setSwChannel; _major = "51"; }; //CF-18 CFB Cold Lake
@@ -101,15 +103,15 @@ if (call TFAR_fnc_haveSWRadio) then {
 };
 
 if (call TFAR_fnc_haveLRRadio) then {
-  [(call TFAR_fnc_activeLrRadio), 1, "31"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeLrRadio), 2, "32"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeLrRadio), 3, "33"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeLrRadio), 4, "34"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeLrRadio), 5, "35"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeLrRadio), 6, "36"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeLrRadio), 7, "30"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeLrRadio), 8, "40"] call TFAR_fnc_setChannelFrequency;
-  [(call TFAR_fnc_activeLrRadio), 9, "41"] call TFAR_fnc_setChannelFrequency;
+  [(call TFAR_fnc_activeLrRadio), 1, "30"] call TFAR_fnc_setChannelFrequency;
+  [(call TFAR_fnc_activeLrRadio), 2, "41"] call TFAR_fnc_setChannelFrequency;
+  [(call TFAR_fnc_activeLrRadio), 3, "42"] call TFAR_fnc_setChannelFrequency;
+  [(call TFAR_fnc_activeLrRadio), 4, "43"] call TFAR_fnc_setChannelFrequency;
+  [(call TFAR_fnc_activeLrRadio), 5, "44"] call TFAR_fnc_setChannelFrequency;
+  [(call TFAR_fnc_activeLrRadio), 6, "45"] call TFAR_fnc_setChannelFrequency;
+  [(call TFAR_fnc_activeLrRadio), 7, "46"] call TFAR_fnc_setChannelFrequency;
+  [(call TFAR_fnc_activeLrRadio), 8, "50"] call TFAR_fnc_setChannelFrequency;
+  [(call TFAR_fnc_activeLrRadio), 9, "51"] call TFAR_fnc_setChannelFrequency;
   //Set 30 active on LR by default
-  [(call TFAR_fnc_activeLrRadio), 6] call TFAR_fnc_setLrChannel;
+  [(call TFAR_fnc_activeLrRadio), 0] call TFAR_fnc_setLrChannel;
 };

@@ -60,7 +60,7 @@ if (_units isEqualTo []) exitWith {};
 while {count _units > 0} do
 {
   private _unit = _units select 0;
-  [_unit] call synixe_main_fnc_earplugs;
+  [_unit] call synixe_common_fnc_earplugs;
   _units = _units - [_unit];
 };
 

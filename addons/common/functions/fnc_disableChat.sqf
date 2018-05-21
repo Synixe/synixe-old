@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * call synixe_main_fnc_disableChat
+ * call synixe_common_fnc_disableChat
  *
  * Public: Yes
  */

@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [player, 1] call synixe_main_fnc_loadout
+ * [player, 1] call synixe_zeus_fnc_loadout
  *
  * Public: Yes
  */

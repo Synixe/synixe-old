@@ -6,7 +6,7 @@ class CfgPatches {
         units[] = {"Synixe_Module_Loadout", "Synixe_Module_Earplugs"};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"synixe_main", "achilles_modules_f_ares"};
+        requiredAddons[] = {"synixe_common", "achilles_modules_f_ares"};
         author = "";
         authors[] = {""};
         VERSION_CONFIG;
