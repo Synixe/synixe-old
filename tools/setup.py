@@ -11,9 +11,9 @@ import platform
 import subprocess
 import winreg
 
-######## GLOBALS #########
+######## GLOBALS #########a
 MAINDIR = "z"
-PROJECTDIR = "synixe
+PROJECTDIR = "synixe"
 ##########################
 
 def main():
