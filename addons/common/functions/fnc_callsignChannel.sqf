@@ -14,7 +14,7 @@
  * Public: Yes
  */
 
-private _major = 8;
+private _major = 7;
 
 switch (toLower _this) do {
   //NATO

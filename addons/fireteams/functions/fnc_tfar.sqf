@@ -13,7 +13,7 @@
 if (call TFAR_fnc_haveSWRadio) then {
   private _radio = call TFAR_fnc_activeSwRadio;
 
-  private _callsign = (groupId group player);
+  private _callsign = (groupId group player) splitString "-" select 0;
 
   private _major = _callsign call synixe_common_fnc_callsignFreq;
 
@@ -44,6 +44,8 @@ if (call TFAR_fnc_haveSWRadio) then {
       };
     };
     case "TL": {
+      //Set the additional channel to the Squad Frequency
+      [_radio, _callsign call synixe_common_fnc_callsignChannel, _major] call TFAR_fnc_setChannelFrequency;
       //Set the additional channel to the Squad Net
       [_radio, (_callsign call synixe_common_fnc_callsignChannel) - 1] call TFAR_fnc_setAdditionalSwChannel;
       //Set the primary channel to the Team Net (Channel 8)

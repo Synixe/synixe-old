@@ -34,8 +34,8 @@
         private _parent = [side player, _parentSquad] call FUNC(squadExists);
         if !(_parent isEqualTo grpNull) then {
           [player] joinSilent _parent;
-          player setVariable [QGVAR(role),"TL", true];
         };
+        player setVariable [QGVAR(role),"TL", true];
         player assignTeam (_team call FUNC(teamColor));
       };
     } else {
