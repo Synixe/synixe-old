@@ -21,7 +21,7 @@ params [
   ["_faction", 0]
 ];
 
-private _role = _unit getVariable ["SZT_ROLE", "Rifleman"];
+private _role = _unit getVariable [QGVAR(role), "Rifleman"];
 
 switch (_faction) do {
   case 0: //NATO

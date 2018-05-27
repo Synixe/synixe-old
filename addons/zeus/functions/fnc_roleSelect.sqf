@@ -5,7 +5,7 @@
   private _dialogResult = nil;
   private _roles = [];
 
-  switch (missionNamespace getVariable "SZT_FACTION") do {
+  switch (missionNamespace getVariable QGVAR(faction)) do {
     case 0: //NATO (Vanilla)
     {
       _roles = ["Rifleman","Rifleman (AT)","Rifleman (LAT)","Autorifleman","Medic"];
@@ -37,9 +37,9 @@
 
   if (_dialogResult isEqualTo []) exitWith {};
 
-  player setVariable ["SZT_ROLE", _roles select (_dialogResult select 0)];
+  player setVariable [QGVAR(role), _roles select (_dialogResult select 0)];
 
-  [player, missionNamespace getVariable "SZT_FACTION"] call FUNC(loadout);
+  [player, missionNamespace getVariable QGVAR(faction)] call FUNC(loadout);
 
   sleep 1;
 

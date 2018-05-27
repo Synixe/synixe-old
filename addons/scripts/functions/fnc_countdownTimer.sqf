@@ -35,7 +35,7 @@ if (isNil "BIS_interruptable") then {
 
 if(isMultiplayer) then
 {
-   private _startTime = _time + serverTime;
+  private _startTime = _time + serverTime;
 
   while {(_startTime - serverTime) > 0} do {
     private _t = _startTime - serverTime;
@@ -58,7 +58,7 @@ if(isMultiplayer) then
 }
 else
 {
-   private _startTime = _time + time;
+  private _startTime = _time + time;
 
   while {(_startTime - time) > 0} do {
     private _t = _startTime - time;

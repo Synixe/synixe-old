@@ -8,7 +8,7 @@ GOM_fnc_playerTemp = {
   params [
     ["_unit",  objNull]
   ];
-  (((getPosASL _unit) select 2) call ace_weather_fnc_calculateTemperatureAtHeight)
+  ((getPosASL _unit) select 2) call ace_weather_fnc_calculateTemperatureAtHeight
 };
 
 GOM_fnc_visibleBreathInit = {
@@ -20,10 +20,10 @@ GOM_fnc_visibleBreathInit = {
         _x setVariable ["GOM_fnc_visibleBreath",true,true];
         if (isPlayer _x) then {
           _x addEventHandler ["SoundPlayed","_this spawn GOM_fnc_visibleBreath"];
-          _breathe = [_x] spawn GOM_fnc_breathLoop;
+          [_x] spawn GOM_fnc_breathLoop;
         };
         if !(isPlayer _x) then {
-          _breathe = [_x] spawn GOM_fnc_breathLoop;
+          [_x] spawn GOM_fnc_breathLoop;
           _x addEventHandler ["Hit",{
             params ["_unit"];
             [_unit,6] spawn GOM_fnc_visibleBreath;
@@ -39,7 +39,7 @@ GOM_fnc_breathLoop = {
   params ["_unit",["_debug",false]];
   if (!alive _unit) exitWith {false};
   sleep random 12;
-  _sleep = 0;
+  private _sleep = 0;
   if (isplayer _unit) then {
     _sleep = 12;
   };
@@ -49,9 +49,9 @@ GOM_fnc_breathLoop = {
     waituntil {if (speed _unit > 10) exitWith {true};sleep 0.5; (_unit call GOM_fnc_playerTemp) < 7.2};
     waituntil {if (speed _unit > 10) exitWith {true};sleep 0.5;((_unit getVariable ["GOM_fnc_eventBreath",-60]) + _sleep < time)};
     if (!alive _unit) exitWith {false};
-    _cause = "";
+    private _cause = "";
     if ((_unit getVariable ["GOM_fnc_eventBreath",-60]) + _sleep < time) then {
-      _index = 1;
+      private _index = 1;
       _sleep = random [3,6,12];
       _cause = "ambient breath";
       if (damage _unit > 0.1) then {
@@ -64,7 +64,7 @@ GOM_fnc_breathLoop = {
         _sleep = random [3,4,5];
         _cause = "hurt breath";
       };
-      _exhaustTimer = _unit getVariable ["GOM_fnc_exhaustTimer",-60];
+      private _exhaustTimer = _unit getVariable ["GOM_fnc_exhaustTimer",-60];
       if (speed _unit > 10 OR getfatigue _unit > 0.05 OR time < _exhaustTimer + 60) then {
         _cause = "running breath";
         if (time < _exhaustTimer + 60) then {_cause = "exhausted breath"};
@@ -75,7 +75,7 @@ GOM_fnc_breathLoop = {
       if (!alive _unit) exitWith {false};
       if (behaviour _unit isEqualTo "COMBAT") then {_sleep = _sleep * 0.5};
       if (behaviour _unit isEqualTo "AWARE") then {_sleep = _sleep * 0.75};
-      _breathe = [_unit,_index,_cause] call GOM_fnc_visibleBreath;
+      [_unit,_index,_cause] call GOM_fnc_visibleBreath;
       _sleep = (_sleep - (damage _unit) - (getfatigue _unit * 1.5)) max random [0.3,0.4,0.5];
       if (_debug) then {
         playsound "click";
@@ -91,48 +91,41 @@ GOM_fnc_breathLoop = {
 
 GOM_fnc_visibleBreath = {
   params ["_unit","_soundID",["_cause","EH breath"]];
-  _player_temp = _unit call GOM_fnc_playerTemp;
+  private _player_temp = _unit call GOM_fnc_playerTemp;
   if !(alive _unit) exitWith {false};
   if (((getposasl _unit) select 2) <= 0) exitWith {false};
   if !(_unit isEqualTo vehicle _unit) exitWith {false};
-  _reference = ["BREATH","BREATHINJURED","INJURED","PULSATION","HITSCREAM","GASPING","STABILIZING","RECOVERED"];
-  _allowed = [1,2,4,5,6,10,11,14];
+  private _allowed = [1,2,4,5,6,10,11,14];
   if !(_soundID in _allowed) exitWith {false};
   if (_player_temp >= 7.2) exitWith {false};
   if (_soundID != 6) then {
     sleep 0.5;
   };
-  _index = (_allowed find _soundID);
-  _speedIntensities = [1,1.5,2,1.3,2.5,2.5,1.3,1.1];
-  _exhaleTimeFactors = [1,0.7,0.5,0.3,.4,1.2,1,1];
-  _speedFactor = _speedIntensities select _index;
-  _exhaleTimeFactor = _exhaleTimeFactors select _index;
-  _preint = (0.06 * (getfatigue _unit)) max 0.006;
-  _cold = 0;
-  _lifeTime = 0.2;
+  private _index = (_allowed find _soundID);
+  private _speedIntensities = [1,1.5,2,1.3,2.5,2.5,1.3,1.1];
+  private _preint = (0.06 * (getfatigue _unit)) max 0.006;
+  private _cold = 0;
+  private _lifeTime = 0.2;
   if (_player_temp < 3) then {_cold = 0.02;_lifeTime = 0.4};
   if (_player_temp < -3) then {_cold = 0.035;_lifeTime = 0.6};
   if (_player_temp < -9) then {_cold = 0.055;_lifeTime = 0.8};
-  _lifeTimeFraction = _lifeTime / 10;
-  _lifeTime = random [_lifeTime - _lifeTimeFraction,_lifeTime,_lifeTime + _lifeTimeFraction];
+  private _lifeTimeFraction = _lifeTime / 10;
+  _lifeTime = random [_lifeTime - _lifeTimeFraction, _lifeTime, _lifeTime + _lifeTimeFraction];
   _preInt = _preInt + _cold;
-  _preintFraction = _preint / 10;
-  _int = random [_preint - _preintFraction,_preint,_preint + _preintFraction];
-  _defaultVel =[0, 0.2, -0.2];
-  _vec = eyeDirection _unit;
-  _vec  params["_dirX","_dirY"];
-  _exhaleDir = _dirX atan2 _dirY;
+  private _int = random [_preint - (_preint / 10), _preint, _preint + (_preint / 10)];
+  (eyeDirection _unit) params ["_dirX", "_dirY"];
+  private _exhaleDir = _dirX atan2 _dirY;
   if (_exhaleDir < 0) then {_exhaleDir = 360 + _exhaleDir};
-  _unitVelocity = velocity _unit;
-  _getExhaleSpeed = 0.26 * _speedFactor;
-  _exhaleSpeed = random [_getExhaleSpeed - (_getExhaleSpeed / 10),_getExhaleSpeed,_getExhaleSpeed + (_getExhaleSpeed / 10)];
-  _exhaleVelocity = [
+  private _unitVelocity = velocity _unit;
+  private _getExhaleSpeed = 0.26 * (_speedIntensities select _index);
+  private _exhaleSpeed = random [_getExhaleSpeed - (_getExhaleSpeed / 10),_getExhaleSpeed,_getExhaleSpeed + (_getExhaleSpeed / 10)];
+  private _exhaleVelocity = [
     (_unitVelocity select 0) + (sin _exhaleDir * _exhaleSpeed),
     (_unitVelocity select 1) + (cos _exhaleDir * _exhaleSpeed),
     (_unitVelocity select 2)
   ];
-  _source = "logic" createVehicleLocal (getpos _unit);
-  _fog = "#particlesource" createVehicleLocal getpos _source;
+  private _source = "logic" createVehicleLocal (getpos _unit);
+  private _fog = "#particlesource" createVehicleLocal getpos _source;
   _fog setParticleParams [
     ["\A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 12, 13,0],
     "",
@@ -153,14 +146,12 @@ GOM_fnc_visibleBreath = {
   ];
   _fog setParticleRandom [2, [0, 0, 0], [0.25, 0.25, 0.25], 0, 0.5, [0, 0, 0, 0.1], 0, 0, 10];
   _fog setDropInterval 0.002;
-  _eyepos = ASLToAGL (eyepos _unit);
-  _mouthpos = _unit worldToModelVisual (_eyepos vectoradd [0,0.09,-0.09]);
-  _source attachto [_unit,_mouthpos];
-  _exhaleTime = 0.4 * _exhaleTimeFactor;
-  sleep random [_exhaleTime - 0.25,_exhaleTime,_exhaleTime + 0.25];
+  _source attachto [_unit, _unit worldToModelVisual ((ASLToAGL (eyepos _unit)) vectoradd [0,0.09,-0.09])];
+  private _exhaleTime = 0.4 * ([1,0.7,0.5,0.3,.4,1.2,1,1] select _index);
+  sleep random [_exhaleTime - 0.25, _exhaleTime, _exhaleTime + 0.25];
   deletevehicle _source;
   deletevehicle _fog;
   _unit setVariable ["GOM_fnc_eventBreath",time];
   true
 };
-_breathe = [] spawn GOM_fnc_visibleBreathInit;
+[] spawn GOM_fnc_visibleBreathInit;

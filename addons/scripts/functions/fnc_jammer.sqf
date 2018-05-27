@@ -11,9 +11,9 @@
  * Return Name <TYPE>
  *
  * Example:
- * ["example"] call ace_[module]_fnc_[functionName]
+ * [jammer1] call synixe_scripts_fnc_jammer
  *
- * Public: [Yes/No]
+ * Public: Yes
  */
 
 if (!hasInterface) exitwith {};

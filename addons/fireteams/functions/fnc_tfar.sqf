@@ -27,7 +27,7 @@ if (call TFAR_fnc_haveSWRadio) then {
 
   [_radio, 8, _major] call TFAR_fnc_setChannelFrequency;
 
-  switch (player getVariable ["SYNIXE_SQUAD_ROLE", ""]) do {
+  switch (player getVariable [QGVAR(role), ""]) do {
     case "SL": {
       //Set the primary channel to the Squad Net
       [_radio, (_callsign call synixe_common_fnc_callsignChannel) - 1] call TFAR_fnc_setSwChannel;

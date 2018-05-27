@@ -12,7 +12,7 @@
   private _faction = _dialogResult select 0;
 
   if (missionName == "SZTv2") then {
-    missionNamespace setVariable ["SZT_FACTION", _faction, true];
+    missionNamespace setVariable [QGVAR(faction), _faction, true];
     {
       [_x, _faction] call FUNC(loadout);
     } forEach allUnits;

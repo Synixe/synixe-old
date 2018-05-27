@@ -28,13 +28,13 @@
     if (_position == 1) then {
       if ((groupId group player) find "-" == -1) then {
         //Squad Leader
-        player setVariable ["SYNIXE_SQUAD_ROLE","SL", true];
+        player setVariable [QGVAR(role),"SL", true];
       } else {
         //Team Leader
         private _parent = [side player, _parentSquad] call FUNC(squadExists);
         if !(_parent isEqualTo grpNull) then {
           [player] joinSilent _parent;
-          player setVariable ["SYNIXE_SQUAD_ROLE","TL", true];
+          player setVariable [QGVAR(role),"TL", true];
         };
         player assignTeam (_team call FUNC(teamColor));
       };
@@ -54,14 +54,14 @@
 
   player spawn FUNC(tfar);
 
-  player setVariable ["SYNIXE_LF_GROUP", group player, true];
+  player setVariable [QGVAR(group), group player, true];
 
   //Update the radio after switching groups
   [
     {
-      if !((player getVariable ["SYNIXE_LF_GROUP",grpNull]) isEqualTo (group player)) then {
+      if !((player getVariable [QGVAR(group),grpNull]) isEqualTo (group player)) then {
         0 spawn FUNC(tfar);
-        player setVariable ["SYNIXE_LF_GROUP", group player, true];
+        player setVariable [QGVAR(group), group player, true];
       };
     }, 2
   ] call CBA_fnc_addPerFrameHandler;

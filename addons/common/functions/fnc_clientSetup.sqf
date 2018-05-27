@@ -13,24 +13,17 @@
 
 #include "script_component.hpp"
 
-if (missionName == "SZTv2") then {
-  call FUNC(szt);
-} else {
-  player spawn FUNC(earplugs);
-};
-
-call FUNC(setFace);
+player spawn FUNC(earplugs);
+0 spawn FUNC(setFace);
 
 player addEventHandler ["Respawn", {
+  [true] call ace_spectator_fnc_setSpectator;
   [] spawn {
-    [true] call ace_spectator_fnc_setSpectator;
-    [] spawn {
-      while {true} do {
-        ((findDisplay 49) displayCtrl 1010) ctrlEnable false;
-        sleep 0.5;
-      };
-    }
-  };
+    while {true} do {
+      ((findDisplay 49) displayCtrl 1010) ctrlEnable false;
+      sleep 0.5;
+    };
+  }
 }];
 
 /*["ace_arsenal_displayOpened", {
@@ -47,15 +40,11 @@ player addEventHandler ["Respawn", {
 player setVariable ["BIS_revive_disableRevive",true];
 
 if (side player != sideLogic) then {
-  [player, currentWeapon player, currentMuzzle player] call ace_safemode_fnc_lockSafety;
+  private _safedWeapons = player getVariable ["ace_safemode_safedWeapons", []];
+  _safedWeapons pushBack (currentWeapon player);
+  player setVariable ["ace_safemode_safedWeapons", _safedWeapons];
 };
 
 [] spawn FUNC(disableChat);
 [] spawn FUNC(discord);
-//[] spawn FUNC(breath);
 [] spawn FUNC(placeFix);
-
-/*[] spawn {
-  sleep 8;
-  call FUNC(tfar);
-};*/
