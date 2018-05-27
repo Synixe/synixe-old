@@ -22,6 +22,7 @@ params [
 ];
 
 private _role = _unit getVariable ["SZT_ROLE", "Rifleman"];
+private _goggles = goggles _unit;
 
 switch (_faction) do {
   case 0: //NATO
@@ -193,6 +194,7 @@ if (_role == "Medic") then {
 [_unit] spawn {
   sleep 2;
   call FUNC(tfar);
+  _unit addGoggles _goggles;
   (_this select 0) call FUNC(earplugs);
   call FUNC(setFace);
 };
