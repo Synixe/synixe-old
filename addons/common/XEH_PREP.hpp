@@ -11,8 +11,9 @@ PREP(setFace);
 PREP(placeFix);
 
 //Common
-PREP(callsignFreq);
 PREP(callsignChannel);
+PREP(callsignFreq);
+PREP(dec2hex);
 PREP(inZeus);
 
 //Tools
