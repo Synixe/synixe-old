@@ -20,24 +20,24 @@ if (hasInterface) then {
 
     addMissionEventHandler ["Draw3D", {
   		{
-  			private _distance = curatorCamera distance _x;
+        private _distance = curatorCamera distance _x;
         if (_distance < 15 && {[objNull, "VIEW"] checkVisibility [eyePos curatorCamera , aimPos _x] > 0.25}) then {
           private _drawInfo = {
             params ["_color","_text", "_height"];
             drawIcon3D
-  					[
-  						"",//Path to image displayed near text
-  						_color,//color of the text using RGBA
-  						ASLToAGL getPosASL _x,//position of the text _x referring to the player in 'allPlayers'
-  						1,//Width
-  						_height,//height from position, below
-  						0,//angle
-  						_text,//text to be displayed
-  						2,//shadow on text, 0=none,1=shadow,2=outline
-  						0.05,//text size
-  						"PuristaMedium",//text font
-  						"center"//align text left, right, or center
-  					];
+            [
+            	"",//Path to image displayed near text
+            	_color,//color of the text using RGBA
+            	ASLToAGL getPosASL _x,//position of the text _x referring to the player in 'allPlayers'
+            	1,//Width
+            	_height,//height from position, below
+            	0,//angle
+            	_text,//text to be displayed
+            	2,//shadow on text, 0=none,1=shadow,2=outline
+            	0.05,//text size
+            	"PuristaMedium",//text font
+            	"center"//align text left, right, or center
+            ];
           };
           [[1,1,1,1], format ["FPS: %1", str (_x getVariable [QGVAR(fps), 0])], -10] call _drawInfo;
           if (_x getVariable QGVAR(spectator)) then {
@@ -68,8 +68,8 @@ if (hasInterface) then {
               };
             };
           };
-				};
-  		} forEach allPlayers;
+      	};
+      } forEach allPlayers;
   	}];
   };
 };
