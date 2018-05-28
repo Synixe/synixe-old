@@ -8,15 +8,17 @@
 * Adds Faction Selection for Zeus Templates
 * Adds a foggy breath effect to all maps when below 7.2 degrees
 * Disables GPS Minimap
+* Disables Arma Voice and Text channels
 * Corrects temperatures on Winter maps
 * Placing units on roofs and carriers
+* Zeus Player Info
 
 ## Zeus Modules
 * Change Loadout - Set the loadout from a list of Synixe Factions
 * Give Earplugs - Gives a unit ACE Earplugs
 
 ## Mission Making Scripts
-* TFAR Radio Jammer
+* Countdown Timer
 * Instant Vehicle Wreck
 
 ## License

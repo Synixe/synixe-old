@@ -13,6 +13,7 @@ PREP(placeFix);
 //Common
 PREP(callsignFreq);
 PREP(callsignChannel);
+PREP(inZeus);
 
 //Tools
 PREP(dump);
