@@ -23,7 +23,7 @@ player addEventHandler ["Respawn", {
       ((findDisplay 49) displayCtrl 1010) ctrlEnable false;
       sleep 0.5;
     };
-  }
+  };
 }];
 
 /*["ace_arsenal_displayOpened", {
