@@ -5,6 +5,22 @@ ADDON = false;
 #include "XEH_PREP.hpp"
 
 [
+  "synixe_zeus_placement",
+  "CHECKBOX",
+  "Advanced Placement",
+  "Synixe Zeus",
+  true,
+  false,
+  {
+    params ["_value"];
+    _value spawn {
+      waitUntil {time > 0 && !(isNull player)};
+      player setVariable [QGVAR(advancedPlacement), _this];
+    };
+  }
+] call CBA_Settings_fnc_init;
+
+[
   "synixe_zeus_name",
   "CHECKBOX",
   "Display Name",

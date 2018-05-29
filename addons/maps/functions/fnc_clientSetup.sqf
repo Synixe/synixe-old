@@ -19,13 +19,9 @@
   missionNamespace setVariable [QGVAR(skipNext), false];
 }] call CBA_fnc_addMarkerEventHandler;
 
-player addEventHandler ["InventoryOpened", {
-  player setVariable [QGVAR(oldMap), (assignedItems player) select 0];
-}];
-
-player addEventHandler ["InventoryClosed", {
+["inventory", {
   private _map = (assignedItems player) select 0;
-	if (player getVariable [QGVAR(oldMap), ""] != _map) then {
+  if (player getVariable [QGVAR(oldMap), ""] != _map) then {
     {
       deleteMarker _x;
     } forEach allMapMarkers;
@@ -35,6 +31,7 @@ player addEventHandler ["InventoryClosed", {
       [_x] call FUNC(setMarkerData);
     } forEach (missionNamespace getVariable [MARKERS(_map), []]);
   };
-}];
+  player setVariable [QGVAR(oldMap), (assignedItems player) select 0];
+}] call CBA_fnc_addPlayerEventHandler;
 
 call FUNC(request);

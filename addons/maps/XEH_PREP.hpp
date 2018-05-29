@@ -1,6 +1,5 @@
 PREP(clientSetup);
 PREP(createMarker);
-PREP(getBriefingMarkers);
 PREP(getMarkerData);
 PREP(initMap);
 PREP(isUnique);
