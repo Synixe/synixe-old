@@ -31,4 +31,10 @@ private _map = format ["synixe_map_%1", _newMap];
 _maps pushBack _map;
 missionNamespace setVariable [QGVAR(maps), _maps];
 
+private _markers = [];
+{
+  _markers pushBack _x;
+} forEach (missionNamespace getVariable [QGVAR(briefingMarkers), []]);
+missionNamespace setVariable [MARKERS(_map), _markers, true];
+
 _map

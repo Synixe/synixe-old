@@ -47,4 +47,3 @@ if (side player != sideLogic) then {
 
 [] spawn FUNC(disableChat);
 [] spawn FUNC(discord);
-//[] spawn FUNC(placeFix);

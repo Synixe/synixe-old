@@ -29,4 +29,4 @@ if (player isKindOf "B_Soldier_F") then { //Let Soldiers choose their role
     {(missionNamespace getVariable QGVAR(faction)) != -1}
   ] call ace_interact_menu_fnc_createAction;
   [setup_flag, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
-}
+};

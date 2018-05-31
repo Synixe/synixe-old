@@ -9,4 +9,4 @@
 
 [0, {
   [QGVAR(received), [call FUNC(register)], _this] call CBA_fnc_targetEvent;
-}, player] call CBA_fnc_globalExecute;
+}, ace_player] call CBA_fnc_globalExecute;

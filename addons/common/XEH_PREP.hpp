@@ -7,9 +7,6 @@ PREP(discord);
 PREP(earplugs);
 PREP(setFace);
 
-//Server Side
-PREP(placeFix);
-
 //Common
 PREP(callsignChannel);
 PREP(callsignFreq);

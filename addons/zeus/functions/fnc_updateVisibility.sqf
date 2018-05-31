@@ -42,10 +42,14 @@ if !(_players == 0) then {
   ];
 };
 
-private _tree = (findDisplay 312) displayCtrl 270;
-private _class = _tree tvData (tvCurSel _tree);
+private _class = call FUNC(getSelectedClass);
+
 if !(_class isEqualTo "") then {
   private _intersections = lineIntersectsSurfaces [getPosASL curatorCamera, _pos, GVAR(placementPreview)];
+  if !(_class isEqualTo (typeOf GVAR(placementPreview))) then {
+    deleteVehicle GVAR(placementPreview);
+    GVAR(placementPreview) = objNull;
+  };
   if (GVAR(placementPreview) isEqualTo objNull) then {
     GVAR(placementPreview) = _class createVehicleLocal (ASLtoAGL _pos);
     GVAR(placementPreview) enableSimulationGlobal false;
@@ -67,5 +71,5 @@ if !(_class isEqualTo "") then {
   if !(GVAR(placementPreview) isEqualTo objNull) then {
     deleteVehicle GVAR(placementPreview);
     GVAR(placementPreview) = objNull;
-  }
+  };
 };

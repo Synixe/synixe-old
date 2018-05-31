@@ -6,7 +6,7 @@ class CfgPatches {
     units[] = {};
     weapons[] = {};
     requiredVersion = REQUIRED_VERSION;
-    requiredAddons[] = {"ace_common"};
+    requiredAddons[] = {"ace_common", "synixe_common"};
     author = "";
     authors[] = {"Brett"};
     authorUrl = "http://synixe.com";

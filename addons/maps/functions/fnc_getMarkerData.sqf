@@ -1,6 +1,6 @@
 /*
  * Author: Brett
- * Get an array with all the data for a markers
+ * Get an array with all the data for a marker
  *
  * Arguments:
  * 0: marker <STRING>

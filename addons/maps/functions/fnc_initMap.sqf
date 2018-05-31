@@ -18,9 +18,5 @@
 
 params ["_map"];
 
-player unlinkItem "ItemMap";
-player linkItem _map;
-
-{
-  [_x] call FUNC(setMarkerData);
-} forEach (missionNamespace getVariable [QGVAR(briefingMarkers), []]);
+ace_player unlinkItem "ItemMap";
+ace_player linkItem _map;

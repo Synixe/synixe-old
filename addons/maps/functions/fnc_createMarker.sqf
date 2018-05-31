@@ -14,4 +14,5 @@ params ["_markerData"];
   private _markers = missionNamespace getVariable [MARKERS(_map), []];
   _markers pushBack _markerData;
   missionNamespace setVariable [MARKERS(_map), _markers, true];
-}, [_markerData, (assignedItems player) select 0]] call CBA_fnc_globalExecute;
+  [QGVAR(mapUpdated), [_map]] call CBA_fnc_globalEvent;
+}, [_markerData, ace_player call FUNC(getMap)]] call CBA_fnc_globalExecute;
