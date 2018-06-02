@@ -21,8 +21,9 @@
       [_x, format ["FPS: %1", str (_x getVariable [QGVAR(fps), 0])], [1,1,1,1]] call FUNC(drawInfo);
     };
     if (player getVariable [QGVAR(displayTeam), false]) then {
-      private _color = ((assignedTeam _x) call synixe_fireteams_fnc_teamNumber) call synixe_fireteams_fnc_teamColorValues;
-      [_x, assignedTeam _x, _color] call FUNC(drawInfo);
+      private _team = _x getVariable [QGVAR(team), "MAIN"];
+      private _color = (_team call synixe_fireteams_fnc_teamNumber) call synixe_fireteams_fnc_teamColorValues;
+      [_x, _team, _color] call FUNC(drawInfo);
     };
     if (_x getVariable QGVAR(spectator)) then {
       [_x, "Spectating", [1,1,1,1]] call FUNC(drawInfo);
