@@ -3,7 +3,7 @@
 disableserialization;
 params ["_display", "_closeNum"];
 
-//if (time == 0) exitWith { systemChat "using ace"; [_display, _closeNum] call ace_markers_fnc_placeMarker; };
+if (time == 0) exitWith { systemChat "using ace"; [_display, _closeNum] call ace_markers_fnc_placeMarker; };
 
 if (_closeNum == 1) then {
   if !(ace_player getVariable [QGVAR(isPeeking), false]) then {
