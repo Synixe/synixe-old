@@ -6,7 +6,7 @@ class CfgPatches {
     units[] = {};
     weapons[] = {};
     requiredVersion = REQUIRED_VERSION;
-    requiredAddons[] = {"ace_common", "synixe_main"};
+    requiredAddons[] = {"ace_common"};
     author = "";
     authors[] = {"Brett"};
     authorUrl = "http://synixe.com";
@@ -14,4 +14,8 @@ class CfgPatches {
   };
 };
 
-#include "CfgEventHandlers.hpp"
+class Extended_DisplayLoad_EventHandlers {
+  class RscCustomInfoMiniMap {
+    synixe_nogps = "params ['_display']; { if (isNull objectParent ACE_player) then { _x ctrlShow false; } } forEach allControls _display;";
+  };
+};

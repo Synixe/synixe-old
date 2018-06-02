@@ -2,9 +2,6 @@
  * Author: Brett
  * Update the map to show markers from the current map
  *
- * Example:
- * _map call synixe_maps_fnc_updateMap
- *
  * Public: No
  */
 

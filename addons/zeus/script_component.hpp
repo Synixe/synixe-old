@@ -1,6 +1,6 @@
 #define COMPONENT zeus
 #define COMPONENT_BEAUTIFIED Zeus Template
-#include "\z\synixe\addons\common\script_mod.hpp"
+#include "\z\synixe\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
 #define DISABLE_COMPILE_CACHE
@@ -15,4 +15,4 @@
   #define DEBUG_SETTINGS DEBUG_SETTINGS_MAIN
 #endif
 
-#include "\z\synixe\addons\common\script_macros.hpp"
+#include "\z\synixe\addons\main\script_macros.hpp"

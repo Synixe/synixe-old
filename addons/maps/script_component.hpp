@@ -1,6 +1,6 @@
 #define COMPONENT maps
 #define COMPONENT_BEAUTIFIED maps
-#include "\z\synixe\addons\common\script_mod.hpp"
+#include "\z\synixe\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
 #define DISABLE_COMPILE_CACHE
@@ -15,5 +15,5 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_MAP
 #endif
 
-#include "\z\synixe\addons\common\script_macros.hpp"
+#include "\z\synixe\addons\main\script_macros.hpp"
 #include "\z\synixe\addons\maps\script_macros.hpp"

@@ -18,5 +18,12 @@
 
 params [["_unit", ace_player, [objNull]]];
 
-if (_unit call FUNC(hasUniqueMap)) exitWith { (assignedItems _unit) select 0 };
-""
+private _map = "";
+
+if (_unit isKindOf "CAManBase") then {
+  if (_unit call FUNC(hasUniqueMap)) then { _map = (assignedItems _unit) select 0 };
+} else {
+  _map = _unit getVariable [QGVAR(map), ""];
+};
+
+_map

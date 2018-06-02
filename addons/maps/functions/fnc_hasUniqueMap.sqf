@@ -18,4 +18,12 @@
 
 params [["_unit", ace_player, [objNull]]];
 
-((assignedItems _unit) select 0) call FUNC(isUnique)
+private _ret = false;
+
+if (_unit isKindOf "CAManBase") then {
+  _ret = ((assignedItems _unit) select 0) call FUNC(isUnique)
+} else {
+  _ret = (_unit getVariable [QGVAR(map), ""]) call FUNC(isUnique)
+};
+
+_ret
