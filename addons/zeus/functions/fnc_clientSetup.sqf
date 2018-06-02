@@ -6,6 +6,7 @@
   player setVariable [QGVAR(psw), call TFAR_fnc_currentSwFrequency, true];
   player setVariable [QGVAR(asw), [(call TFAR_fnc_activeSwRadio), ((call TFAR_fnc_ActiveSwRadio) call TFAR_fnc_getAdditionalSwChannel) + 1] call TFAR_fnc_getChannelFrequency, true];
   player setVariable [QGVAR(spectator), player getVariable ["ace_spectator_isSet", false], true];
+  player setVariable [QGVAR(team), assignedTeam player, true];
 }, 1] call CBA_fnc_addPerFrameHandler;
 
 GVAR(placementPreview) = objNull;
@@ -16,7 +17,7 @@ GVAR(placementPreview) = objNull;
       {
         GVAR(placementPreview) disableCollisionWith _x;
         [GVAR(placementPreview), _x] remoteExecCall ["disableCollisionWith", _x, _x];
-      } forEach (nearestObjects [getPos GVAR(placementPreview), [], 50])
+      } forEach (nearestObjects [getPos GVAR(placementPreview), [], 50]);
     };
   };
 }] call CBA_fnc_addPerFrameHandler;

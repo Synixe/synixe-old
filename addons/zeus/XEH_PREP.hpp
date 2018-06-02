@@ -1,4 +1,5 @@
 PREP(clientSetup);
+PREP(drawInfo);
 PREP(factionSelect);
 PREP(getSelectedClass);
 PREP(loadout);

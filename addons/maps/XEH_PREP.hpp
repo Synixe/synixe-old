@@ -1,4 +1,5 @@
 PREP(canMapInteract);
+PREP(checkPeek);
 PREP(clientSetup);
 PREP(copy);
 PREP(createMarker);
@@ -6,9 +7,9 @@ PREP(deleteMarker);
 PREP(getMap);
 PREP(getMarkerData);
 PREP(hasUniqueMap);
-PREP(initMap);
 PREP(isUnique);
 PREP(peek);
+PREP(placeMarker);
 PREP(register);
 PREP(request);
 PREP(serverSetup);

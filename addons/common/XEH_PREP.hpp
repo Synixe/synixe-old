@@ -5,7 +5,6 @@ PREP(clientSetup);
 PREP(disableChat);
 PREP(discord);
 PREP(earplugs);
-PREP(setFace);
 
 //Common
 PREP(callsignChannel);

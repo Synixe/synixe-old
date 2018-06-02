@@ -13,9 +13,6 @@
 
 #include "script_component.hpp"
 
-player spawn FUNC(earplugs);
-0 spawn FUNC(setFace);
-
 player addEventHandler ["Respawn", {
   [true] call ace_spectator_fnc_setSpectator;
   [] spawn {
@@ -40,10 +37,9 @@ player addEventHandler ["Respawn", {
 player setVariable ["BIS_revive_disableRevive",true];
 
 if (side player != sideLogic) then {
-  private _safedWeapons = player getVariable ["ace_safemode_safedWeapons", []];
-  _safedWeapons pushBack (currentWeapon player);
-  player setVariable ["ace_safemode_safedWeapons", _safedWeapons];
+  [player, currentWeapon player, currentMuzzle player] call ace_safemode_fnc_lockSafety;
 };
 
 [] spawn FUNC(disableChat);
 [] spawn FUNC(discord);
+player call FUNC(earplugs);

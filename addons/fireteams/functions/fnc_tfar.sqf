@@ -40,7 +40,7 @@ if (call TFAR_fnc_haveSWRadio) then {
         //Set channel 8 to the team net frequency
         [_radio, 8, (format ["%1.%2", _major, (assignedTeam player) call FUNC(teamNumber)])] call TFAR_fnc_setChannelFrequency;
         //Set the additional channel to Squad Net (Channel 8)
-        [_radio, 8] call TFAR_fnc_setAdditionalSwChannel;
+        [_radio, 7] call TFAR_fnc_setAdditionalSwChannel;
       };
     };
     case "TL": {

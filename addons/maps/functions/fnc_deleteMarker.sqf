@@ -18,6 +18,6 @@ params ["_marker"];
       _newMarkers pushBack _x;
     };
   } forEach _markers;
-  missionNamespace setVariable [MARKERS(_map), _markers, true];
-  [QGVAR(mapUpdated), [_map]] call CBA_fnc_globalExecute;
+  missionNamespace setVariable [MARKERS(_map), _newMarkers, true];
+  [QGVAR(mapUpdated), [_map]] call CBA_fnc_globalEvent;
 }, [_marker, ace_player call FUNC(getMap)]] call CBA_fnc_globalExecute;

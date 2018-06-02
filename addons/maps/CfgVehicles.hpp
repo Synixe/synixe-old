@@ -23,6 +23,14 @@ class CfgVehicles {
         };
       };
     };
+    class ACE_SelfActions {
+      class Synixe_Map {
+        displayName = "Get Unique Map";
+        icon = "\a3\3DEN\Data\Displays\Display3DEN\ToolBar\map_off_ca.paa";
+        condition = "(player != ace_player) && { !(ace_player call synixe_maps_fnc_hasUniqueMap) }";
+        statement = "call synixe_maps_fnc_request";
+      };
+    };
   };
 
   /*class Thing;
