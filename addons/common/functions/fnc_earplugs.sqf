@@ -14,6 +14,6 @@
  * Public: Yes
  */
 
-if (!("ACE_EarPlugs" in (items _this))) then {
+if !("ACE_EarPlugs" in (items _this)) then {
   _this addItem "ACE_EarPlugs";
 };

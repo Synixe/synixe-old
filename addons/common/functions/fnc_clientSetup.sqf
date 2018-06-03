@@ -23,18 +23,8 @@ player addEventHandler ["Respawn", {
   };
 }];
 
-/*["ace_arsenal_displayOpened", {
-  player setVariable ["synixe_enter_radio", (call TFAR_fnc_activeSwRadio)];
-}] call CBA_fnc_addEventHandler;
-
-["ace_arsenal_displayClosed", {
-  if (player getVariable ["synixe_enter_radio", ""] != call TFAR_fnc_activeSwRadio) then {
-    0 spawn FUNC(tfar);
-  };
-}] call CBA_fnc_addEventHandler;*/
-
 //Disable BIS Revive
-player setVariable ["BIS_revive_disableRevive",true];
+player setVariable ["BIS_revive_disableRevive", true];
 
 if (side player != sideLogic) then {
   [player, currentWeapon player, currentMuzzle player] call ace_safemode_fnc_lockSafety;
@@ -42,4 +32,4 @@ if (side player != sideLogic) then {
 
 [] spawn FUNC(disableChat);
 [] spawn FUNC(discord);
-player call FUNC(earplugs);
+player spawn FUNC(earplugs);
