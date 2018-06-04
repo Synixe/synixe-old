@@ -40,8 +40,8 @@ switch (toLower _this) do {
 
   //Generic Support 50. Anything that does NOT fall into one of the categories below. 
   // Medevacs / SAR would fall under Helo Trans
-  case "jester":  { _major = 50; };
-  case "spectre":  { _major = 50; };
+  case "jester":    { _major = 50; };
+  case "spectre":   { _major = 50; };
   case "phoenix":   { _major = 50; }; 
 
   //Jets Freq. 51
@@ -57,7 +57,7 @@ switch (toLower _this) do {
   //Helo CAS 53
   case "vulcan":    { _major = 53; };
   case "hornet":    { _major = 53; };
-  case "brutal":     { _major = 53; };
+  case "brutal":    { _major = 53; };
 
   //Helo Trans 54
   case "guardian":  { _major = 54; };
@@ -75,9 +75,9 @@ switch (toLower _this) do {
   case "gridiron":  { _major = 56; };
 
   //AA|AAA unit, this is armored units. 57
-  case "magpie":    { _major = 57; };
+  case "patriot":   { _major = 57; };
   case "badger":    { _major = 57; };
-  case "buzzsaw":  { _major = 57; };
+  case "buzzsaw":   { _major = 57; };
 
   //Artillery, can be used for a mortar squad or actuall artillery units. 58
   case "rainmaker": { _major = 58; };
@@ -85,12 +85,12 @@ switch (toLower _this) do {
   case "anvil":     { _major = 58; };
 
   //Russian
-  case "anna":     { _major = 31; };
-  case "boris":    { _major = 32; };
-  case "vasily":   { _major = 33; };
-  case "gregory":  { _major = 34; };
-  case "dmitri":   { _major = 35; };
-  case "yelena":   { _major = 36; };
+  case "anna":      { _major = 31; };
+  case "boris":     { _major = 32; };
+  case "vasily":    { _major = 33; };
+  case "gregory":   { _major = 34; };
+  case "dmitri":    { _major = 35; };
+  case "yelena":    { _major = 36; };
 };
 
 _major;
