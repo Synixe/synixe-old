@@ -1,5 +1,6 @@
 /*
  * Author: Brett
+ * Contributor: Reign0fDeath
  * Return the frequency used by a callsign
  *
  * Arguments:
