@@ -19,6 +19,7 @@ private _major = 40;
 
 switch (toLower _this) do {
   //NATO
+  
   //Squad leaders will be 'actual' while team leaders would be <Squadname 1, Squadname 2> etc. 
   //Squad leaders will call themselves <Squadname> over the command net.
 
@@ -48,10 +49,9 @@ switch (toLower _this) do {
   //C-130 (Transport) | 52 
   case "angel":     { _major = 52; };//7th Wing, Dyess AFB, TX 
   case "bixby":     { _major = 52; };//C-130E 23rd Wing, Pope AFB, NC
-  case "tally":     { _major = 52; };//C-130E 23rd Wing, Pope AFB, NC
+  case "atlas":     { _major = 53; }; //CC-130H CFB Winnipeg
 
   //AC-130 (Gunship) | 53
-  case "atlas":     { _major = 53; }; //CC-130H CFB Winnipeg
   case "spooky":    { _major = 53; }; //AC-130 callword.
   case "poseidon":  { _major = 53; }; 
 
