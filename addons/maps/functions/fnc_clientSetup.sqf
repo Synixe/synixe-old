@@ -25,7 +25,7 @@
 }] call CBA_fnc_AddEventHandler;
 
 addMissionEventHandler ["Map", {
-	params ["_open", "_forced"];
+  params ["_open", "_forced"];
   if (_open) then {
     if (ace_player call FUNC(hasUniqueMap)) then {
       call FUNC(updateMapView);
