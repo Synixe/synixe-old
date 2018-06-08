@@ -16,10 +16,18 @@
 
 #include "script_component.hpp"
 
-disableUserInput true;
+if (isMultiplayer) then {
+  disableUserInput true;
+  0 spawn {
+    sleep 5;
+    disableUserInput false;
+  };
+};
 
 ["TFAR_event_OnRadiosReceived", {
+  if (player getVariable [QGVAR(setup), false]) exitWith {};
   0 spawn {
+    player setVariable [QGVAR(setup), true];
     //Set fireteam variables
     private _position = parseNumber(([[str player, count(toArray(str group player))+1] call BIS_fnc_trimString, " "] call BIS_fnc_splitString) select 0);
     private _parentSquad = (groupId group player) splitString "-" select 0;
