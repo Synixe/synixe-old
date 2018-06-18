@@ -14,14 +14,30 @@
 #include "script_component.hpp"
 
 player addEventHandler ["Respawn", {
+  params ["", "_corpse"];
+  player setVariable ["synixe_zeus_corpse", _corpse, true];
+  private _pos = getPosASL player;
+  player setPosASL [0,0,5];
+  player enableSimulation false;
   [true] call ace_spectator_fnc_setSpectator;
-  [] spawn {
-    while {true} do {
-      ((findDisplay 49) displayCtrl 1010) ctrlEnable false;
-      sleep 0.5;
+  [{
+    private _pauseMenu = findDisplay 49;
+    if !(isNull _pauseMenu) then {
+      (_pauseMenu displayCtrl 1010) ctrlEnable false;
     };
+  }] call CBA_fnc_addPerFrameHandler;
+  _pos spawn {
+    sleep 0.2;
+    ace_spectator_camera setPosASL _this;
   };
 }];
+
+[{
+  private _pauseMenu = findDisplay 49;
+  if !(isNull _pauseMenu) then {
+    (_pauseMenu displayCtrl 1010) ctrlSetText "Lose will to live (Specate)";
+  };
+}] call CBA_fnc_addPerFrameHandler;
 
 //Disable BIS Revive
 player setVariable ["BIS_revive_disableRevive", true];

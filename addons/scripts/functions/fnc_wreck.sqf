@@ -22,6 +22,7 @@ params [
 
 _veh spawn {
   _this setVariable ["ace_cookoff_enable", false, true];
+  _this setVariable ["ace_cookoff_enableAmmoCookoff", false, true];
   sleep 0.5;
   _this setDamage 1;
   _this setDamage 0;
