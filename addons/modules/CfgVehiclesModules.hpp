@@ -31,15 +31,13 @@ class CfgVehicles {
     };
   };
 
-  class Synixe_Module_Loadout: Synixe_Module_Base {
-    Category = "SYNIXE";
+  class Synixe_Module_Wreck: Synixe_Module_Base {
     scopeCurator = 2;
-    function = "synixe_modules_fnc_loadout";
-    displayName = "Change Loadout";
+    function = "synixe_modules_fnc_wreck";
+    displayName = "Make Wreck";
   };
 
   class Synixe_Module_Earplugs: Synixe_Module_Base {
-    Category = "SYNIXE";
     scopeCurator = 2;
     function = "synixe_modules_fnc_earplugs";
     displayName = "Give Earplugs";

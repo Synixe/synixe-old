@@ -4,7 +4,6 @@
  *
  * Arguments:
  * _vehicle (OBJECT)
- * _simulation (BOOLEAN)
  *
  * Return Value:
  * None
@@ -18,14 +17,14 @@
 //TODO I am not sure what will happen to the occupants of the vehicle yet
 
 params [
-  ["_veh", objNull],
-  ["_sim", true]
+  ["_veh", objNull]
 ];
 
-_veh setVariable ["ace_cookoff_enable", false, true];
-_veh setDamage 1;
-_veh setDamage 0;
-_veh setDamage 1;
-if (_sim == false) then {
-  _veh enableSimulation false;
-};
+_veh spawn {
+  _this setVariable ["ace_cookoff_enable", false, true];
+  sleep 0.5;
+  _this setDamage 1;
+  _this setDamage 0;
+  sleep 0.5;
+  _this setDamage 1;
+}

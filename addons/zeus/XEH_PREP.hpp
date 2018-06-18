@@ -6,4 +6,5 @@ PREP(loadout);
 PREP(roleSelect);
 PREP(szt);
 PREP(updatePlayerInfo);
+PREP(updatePreview);
 PREP(updateVisibility);

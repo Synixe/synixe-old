@@ -17,4 +17,20 @@ if (hasInterface) then {
       ] call CBA_fnc_waitUntilAndExecute;
     };
   };
+
+  addMissionEventHandler ["Draw3D", {
+    if (call synixe_common_fnc_inZeus) then {
+      //Synixe Logo
+      private _zeusLogo = (findDisplay 312) displayCtrl 15717;
+      Achilles_var_iconSelection = "Achilles_var_iconSelection_Default";
+      _zeusLogo ctrlSetText "\z\synixe\addons\zeus\pictures\synixe_logo_transparent_ca.paa";
+      _zeusLogo ctrlSetTextColor [1, 1, 1, 0.6];
+      _zeusLogo ctrlCommit 0;
+
+      private _zeusLogo = (findDisplay 312) displayCtrl 15715;
+      _zeusLogo ctrlSetText "\z\synixe\addons\zeus\pictures\synixe_logo_transparent_ca.paa";
+      _zeusLogo ctrlSetTextColor [1, 1, 1, 1];
+      _zeusLogo ctrlCommit 0;
+    };
+  }];
 };

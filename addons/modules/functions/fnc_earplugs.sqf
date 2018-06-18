@@ -57,11 +57,8 @@ if (isNull _unitUnderCursor) then
 if (isNil "_units") exitWith {};
 if (_units isEqualTo []) exitWith {};
 
-while {count _units > 0} do
 {
-  private _unit = _units select 0;
-  [_unit] call synixe_common_fnc_earplugs;
-  _units = _units - [_unit];
-};
+  _x call synixe_common_fnc_earplugs;
+} forEach _units;
 
 #include "\achilles\modules_f_ares\module_footer.hpp"

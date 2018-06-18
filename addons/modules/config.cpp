@@ -3,7 +3,7 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {"Synixe_Module_Loadout", "Synixe_Module_Earplugs"};
+        units[] = {"Synixe_Module_Wreck", "Synixe_Module_Earplugs"};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"synixe_common", "synixe_main", "achilles_modules_f_ares"};

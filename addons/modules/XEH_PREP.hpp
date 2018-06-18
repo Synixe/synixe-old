@@ -1,2 +1,2 @@
-PREP(loadout);
 PREP(earplugs);
+PREP(wreck);

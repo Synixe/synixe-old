@@ -25,31 +25,28 @@ GVAR(placementPreview) = objNull;
 addMissionEventHandler ["Draw3D", {
   if (call synixe_common_fnc_inZeus) then {
     call FUNC(updatePlayerInfo);
-    if (player getVariable [QGVAR(advancedPlacement), false]) then {
+    if (player getVariable [QGVAR(visibilityIndicator), false]) then {
       call FUNC(updateVisibility);
     };
-
-    //Synixe Logo
-    private _zeusLogo = (findDisplay 312) displayCtrl 15717;
-    Achilles_var_iconSelection = "Achilles_var_iconSelection_Default";
-    _zeusLogo ctrlSetText "\z\synixe\addons\zeus\pictures\synixe_logo_transparent_ca.paa";
-    _zeusLogo ctrlSetTextColor [1, 1, 1, 0.6];
-    _zeusLogo ctrlCommit 0;
-
-    private _zeusLogo = (findDisplay 312) displayCtrl 15715;
-    _zeusLogo ctrlSetText "\z\synixe\addons\zeus\pictures\synixe_logo_transparent_ca.paa";
-    _zeusLogo ctrlSetTextColor [1, 1, 1, 1];
-    _zeusLogo ctrlCommit 0;
+    if (player getVariable [QGVAR(objectPreview), false]) then {
+      call FUNC(updatePreview);
+    };
   };
 }];
 
 0 spawn {
   waitUntil {!isNull (getAssignedCuratorLogic player)};
   (getAssignedCuratorLogic player) addEventHandler ["CuratorObjectPlaced", {
-    if (player getVariable [QGVAR(advancedPlacement), false]) then {
+    if (player getVariable [QGVAR(properPlacement), false]) then {
       (_this select 1) allowDamage false;
-      deleteVehicle GVAR(placementPreview);
+      {
+        _x allowDamage false;
+      } forEach crew (_this select 1);
+      if (player getVariable [QGVAR(objectPreview), false]) then {
+        deleteVehicle GVAR(placementPreview);
+      };
       (_this select 1) spawn {
+        _this setPosASL [0,0,100];
         private _pos = AGLtoASL screenToWorld getMousePosition;
         private _intersections = lineIntersectsSurfaces [getPosASL curatorCamera, _pos];
         if((count _intersections) != 0) then {
@@ -60,6 +57,9 @@ addMissionEventHandler ["Draw3D", {
         };
         sleep 1;
         _this allowDamage true;
+        {
+          _x allowDamage true;
+        } forEach crew _this;
       };
     };
   }];
