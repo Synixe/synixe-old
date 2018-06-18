@@ -97,7 +97,10 @@ if (isMultiplayer) then {
       if ((groupId _group) == (groupId group player) splitString "-" select 0) then {
         private _color = assignedTeam player;
         [player] joinSilent _group;
-        player assignTeam _color;
+        0 spawn {
+          sleep 1;
+          player assignTeam _color;
+        };
       };
     }] call CBA_fnc_addEventHandler;
   };
