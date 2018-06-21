@@ -25,12 +25,15 @@
 }] call CBA_fnc_AddEventHandler;
 
 addMissionEventHandler ["Map", {
-  params ["_open", "_forced"];
+  params ["_open", ""];
   if (_open) then {
     if (ace_player call FUNC(hasUniqueMap)) then {
       call FUNC(updateMapView);
     } else {
-      [{openMap false;}] call CBA_fnc_execNextFrame;
+      if ("ItemMap" in (items ace_player)) then {
+        [{openMap false;}] call CBA_fnc_execNextFrame;
+        systemChat "You do not have a unqiue map. Use Self Interaction to request one";
+      };
     };
   };
 }];
