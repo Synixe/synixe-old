@@ -15,7 +15,7 @@ ADDON = false;
   {
     params ["_value"];
     _value spawn {
-      waitUntil {time > 2 && !(isNull player)};
+      waitUntil {time > 4 && !(isNull player)};
       if (isClass(configFile >> "CfgPatches" >> "tfar_core")) then {
         [(call TFAR_fnc_activeSWRadio), _this] call TFAR_fnc_setSwStereo;
       };

@@ -1,5 +1,9 @@
 #include "script_component.hpp"
 
+if !([player, RIFLEMAN_RADIO] call acre_api_fnc_hasKindOfRadio) then {
+  player addItem RIFLEMAN_RADIO;
+};
+
 switch (player getVariable [QGVAR(role), ""]) do {
   case "SL": {
     if !([player, SQUAD_RADIO] call acre_api_fnc_hasKindOfRadio) then {
@@ -20,7 +24,7 @@ switch (player getVariable [QGVAR(role), ""]) do {
   call acre_api_fnc_isInitialized
 }, { 0 spawn {
 
-  sleep 2;
+  sleep 3;
 
   player assignTeam ((player getVariable [QGVAR(originalTeam), 0]) call FUNC(teamColor));
 

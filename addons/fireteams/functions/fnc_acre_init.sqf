@@ -119,6 +119,11 @@ switch (side player) do {
 
   player spawn FUNC(acre);
 
+  if (side player isEqualTo sideLogic) then {
+    disableUserInput false;
+    player enableSimulation false;
+  };
+
   player setVariable [QGVAR(group), group player, true];
   player setVariable [QGVAR(ready), true];
 

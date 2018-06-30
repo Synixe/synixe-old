@@ -19,6 +19,9 @@ GVAR(placementPreview) = objNull;
         [GVAR(placementPreview), _x] remoteExecCall ["disableCollisionWith", _x, _x];
       } forEach (nearestObjects [getPos GVAR(placementPreview), [], 50]);
     };
+    if (side player isEqualTo sideLogic) then {
+      player setPos (getPos curatorCamera);
+    };
   };
 }] call CBA_fnc_addPerFrameHandler;
 
