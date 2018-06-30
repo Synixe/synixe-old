@@ -15,8 +15,13 @@ ADDON = false;
   {
     params ["_value"];
     _value spawn {
-      waitUntil {time > 10 && !(isNull player)};
-      [(call TFAR_fnc_activeSWRadio), _this] call TFAR_fnc_setSwStereo;
+      waitUntil {time > 2 && !(isNull player)};
+      if (isClass(configFile >> "CfgPatches" >> "tfar_core")) then {
+        [(call TFAR_fnc_activeSWRadio), _this] call TFAR_fnc_setSwStereo;
+      };
+      if (isClass(configFile >> "CfgPatches" >> "acre_main")) then {
+        [["ACRE_PRC343"] call acre_api_fnc_getRadioByType, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+      };
     };
   }
 ] call CBA_Settings_fnc_init;

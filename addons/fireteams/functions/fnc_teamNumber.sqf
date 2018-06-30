@@ -14,13 +14,13 @@
  * Public: Yes
  */
 
-private _ret = 0;
+private _ret = 1;
 
 switch (_this) do {
-  case "RED":     {_ret = 1;};
-  case "GREEN":   {_ret = 2;};
-  case "BLUE":    {_ret = 3;};
-  case "YELLOW":  {_ret = 4;};
+  case "RED":     {_ret = 2;};
+  case "GREEN":   {_ret = 3;};
+  case "BLUE":    {_ret = 4;};
+  case "YELLOW":  {_ret = 5;};
 };
 
 _ret;
