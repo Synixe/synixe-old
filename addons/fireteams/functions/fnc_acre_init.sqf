@@ -51,6 +51,9 @@ switch (side player) do {
   case civilian: {
     ["gr"] call acre_api_fnc_babelSetSpokenLanguages;
   };
+  case sideLogic: {
+    ["en", "ru", "ar", "gr"] call acre_api_fnc_babelSetSpokenLanguages;
+  };
 };
 
 {
@@ -126,6 +129,11 @@ switch (side player) do {
 
   player setVariable [QGVAR(group), group player, true];
   player setVariable [QGVAR(ready), true];
+
+  0 spawn {
+    sleep 10;
+    disableUserInput false;
+  };
 
   [{
     if !((player getVariable [QGVAR(group), grpNull]) isEqualTo (group player)) then {
