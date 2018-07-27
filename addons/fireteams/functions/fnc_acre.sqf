@@ -32,10 +32,10 @@ uiNamespace getVariable [QGVAR(loadingStatus), 0] ctrlSetText "Waiting for ACRE 
 
   call FUNC(acre_setup);
 
-  [-1, {
+  [-2, {
     0 spawn {
       sleep 1;
-      EGVAR(loading,ready) = EGVAR(loading,ready) + 1;
+      INC(EGVAR(loading,ready));
     };
   }] call CBA_fnc_globalExecute;
   waitUntil {
@@ -46,6 +46,8 @@ uiNamespace getVariable [QGVAR(loadingStatus), 0] ctrlSetText "Waiting for ACRE 
     ];
     (count allPlayers) isEqualTo EGVAR(loading,ready)
   };
+  sleep 1;
   uiNamespace getVariable [QGVAR(loadingScreen), 0] closeDisplay 1;
   disableUserInput false;
+  ["synixe_ready"] call CBA_fnc_localEvent;
 }}, _this] call CBA_fnc_waitUntilAndExecute;

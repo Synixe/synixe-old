@@ -88,7 +88,10 @@ switch (side player) do {
     disableUserInput false;
   };
 
-  uiNamespace setVariable [QGVAR(loadingScreen), (findDisplay 46) createDisplay "RscDisplayLoadMission"];
+  private _displayIDD = 46;
+
+  waitUntil { !isNull(findDisplay _displayIDD) };
+  uiNamespace setVariable [QGVAR(loadingScreen), (findDisplay _displayIDD) createDisplay "RscDisplayLoadMission"];
   uiNamespace setVariable [QGVAR(loadingStatus), uiNamespace getVariable [QGVAR(loadingScreen), 0] displayCtrl 1102];
 
   sleep 2;
@@ -96,7 +99,7 @@ switch (side player) do {
   [-1, {
     0 spawn {
       sleep 1;
-      EGVAR(loading,loaded) = EGVAR(loading,loaded) + 1;
+      INC(EGVAR(loading,loaded));
     };
   }] call CBA_fnc_globalExecute;
   waitUntil {
@@ -160,7 +163,7 @@ switch (side player) do {
 
   ["CBA_teamColorChanged", {
     params ["_unit"];
-    if (_unit == player) then {
+    if (_unit isEqualTo player) then {
       0 spawn FUNC(acre_setup);
     };
   }] call CBA_fnc_addEventHandler;
@@ -169,7 +172,7 @@ switch (side player) do {
   [QGVAR(squadLeader), {
     params ["_group"];
     if !(player getVariable [QGVAR(ready), false]) exitWith {};
-    if ((groupId _group) == (groupId group player) splitString "-" select 0) then {
+    if ((groupId _group) isEqualto (groupId group player) splitString "-" select 0) then {
       private _color = assignedTeam player;
       [player] joinSilent _group;
       _color spawn {

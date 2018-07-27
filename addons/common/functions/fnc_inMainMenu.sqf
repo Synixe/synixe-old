@@ -8,4 +8,4 @@
  * Public: Yes
  */
 
-!isNull(findDisplay 0)
+!isNull(findDisplay 104)
