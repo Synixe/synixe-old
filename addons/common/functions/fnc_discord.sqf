@@ -1,21 +1,29 @@
+#include "script_component.hpp"
+
 //In the future it would be nice to automatically track who comes to missions.
 //"synixe" callExtension ["setup", [getPlayerUID player]];
 "synixe" callExtension "setup";
 private _role = "http://synixe.com";
 private _mission = "";
-if (isServer) then {
-  _mission = "Editing Missions";
+
+if (call FUNC(inMainMenu)) then {
+  _mission = "Main Menu";
 } else {
-  if (roleDescription player != "") then {
-    _role = roleDescription player;
-  };
-  _mission = missionName;
-  if (_mission == "tempMissionSP") then {
+  if (isServer) then {
     _mission = "Editing Missions";
   } else {
-    _mission = briefingName;
+    if (roleDescription player != "") then {
+      _role = roleDescription player;
+    };
+    _mission = missionName;
+    if (_mission == "tempMissionSP") then {
+      _mission = "Editing Missions";
+    } else {
+      _mission = briefingName;
+    };
   };
 };
+
 "synixe" callExtension [
   "update",
   [

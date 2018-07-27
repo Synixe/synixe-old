@@ -1,4 +1,5 @@
 PREP(acre_init);
+PREP(acre_setup);
 PREP(acre);
 PREP(squadExists);
 PREP(teamColor);

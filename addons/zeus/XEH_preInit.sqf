@@ -25,7 +25,7 @@ ADDON = false;
   "CHECKBOX",
   "Object Preview",
   "Synixe Zeus Placement",
-  true,
+  false,
   false,
   {
     params ["_value"];
@@ -117,9 +117,9 @@ ADDON = false;
 ] call CBA_Settings_fnc_init;
 
 [
-  "synixe_zeus_tfar",
+  "synixe_zeus_radio",
   "CHECKBOX",
-  "Display TFAR Frequencies",
+  "Display Radio Information",
   "Synixe Zeus Player Info",
   true,
   false,
@@ -127,7 +127,7 @@ ADDON = false;
     params ["_value"];
     _value spawn {
       waitUntil {time > 0 && !(isNull player)};
-      player setVariable [QGVAR(displayTFAR), _this];
+      player setVariable [QGVAR(displayRadio), _this];
     };
   }
 ] call CBA_Settings_fnc_init;

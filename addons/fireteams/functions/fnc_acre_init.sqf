@@ -79,7 +79,34 @@ switch (side player) do {
 0 spawn {
 
   disableUserInput true;
-  sleep 1;
+
+  //Incase of error
+  0 spawn {
+    sleep 15;
+    //TODO Dispaly a warning if the loading was not successful
+    uiNamespace getVariable [QGVAR(loadingScreen), 0] closeDisplay 1;
+    disableUserInput false;
+  };
+
+  uiNamespace setVariable [QGVAR(loadingScreen), (findDisplay 46) createDisplay "RscDisplayLoadMission"];
+  uiNamespace setVariable [QGVAR(loadingStatus), uiNamespace getVariable [QGVAR(loadingScreen), 0] displayCtrl 1102];
+
+  sleep 2;
+
+  [-1, {
+    0 spawn {
+      sleep 1;
+      EGVAR(loading,loaded) = EGVAR(loading,loaded) + 1;
+    };
+  }] call CBA_fnc_globalExecute;
+  waitUntil {
+    uiNamespace getVariable [QGVAR(loadingStatus), 0] ctrlSetText format [
+      "%1 / %2 Players Loaded",
+      EGVAR(loading,loaded),
+      count allPlayers
+    ];
+    (count allPlayers) isEqualTo EGVAR(loading,loaded)
+  };
 
   private _position = parseNumber(([[str player, count(toArray(str group player))+1] call BIS_fnc_trimString, " "] call BIS_fnc_splitString) select 0);
   private _parentSquad = (groupId group player) splitString "-" select 0;
@@ -91,12 +118,10 @@ switch (side player) do {
     if (_position == 1) then {
       if ((groupId group player) find "-" == -1) then {
         //Squad Leader
-        systemChat "You are a Squad Leader";
         player setVariable [QGVAR(role), "SL", true];
         [QGVAR(squadLeader), [group player]] call CBA_fnc_globalEvent;
       } else {
         //Team Leader
-        systemChat "You are a Team Leader";
         private _parent = [side player, _parentSquad] call FUNC(squadExists);
         if !(_parent isEqualTo grpNull) then {
           [player] joinSilent _parent;
@@ -107,17 +132,13 @@ switch (side player) do {
       private _parent = [side player, _parentSquad] call FUNC(squadExists);
       if (_parent isEqualTo (group player)) then {
         //Squad Level Member
-        systemChat "You are a Squad Level Member";
       } else {
         //Team Member
-        systemChat "You are a Team Member";
         if !(_parent isEqualTo grpNull) then {
           [player] joinSilent _parent;
         };
       };
     };
-  } else {
-    systemChat "You are not in a Fireteam System";
   };
 
   player spawn FUNC(acre);
@@ -130,14 +151,9 @@ switch (side player) do {
   player setVariable [QGVAR(group), group player, true];
   player setVariable [QGVAR(ready), true];
 
-  0 spawn {
-    sleep 10;
-    disableUserInput false;
-  };
-
   [{
     if !((player getVariable [QGVAR(group), grpNull]) isEqualTo (group player)) then {
-      0 spawn FUNC(acre);
+      0 spawn FUNC(acre_setup);
       player setVariable [QGVAR(group), group player, true];
     };
   }, 2] call CBA_fnc_addPerFrameHandler;
@@ -145,7 +161,7 @@ switch (side player) do {
   ["CBA_teamColorChanged", {
     params ["_unit"];
     if (_unit == player) then {
-      0 spawn FUNC(acre);
+      0 spawn FUNC(acre_setup);
     };
   }] call CBA_fnc_addEventHandler;
 

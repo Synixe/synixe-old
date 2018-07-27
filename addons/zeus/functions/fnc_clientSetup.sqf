@@ -3,8 +3,13 @@
 //Add some info to the player's unit globally
 [{
   player setVariable [QGVAR(fps), floor diag_fps, true];
-  player setVariable [QGVAR(psw), call TFAR_fnc_currentSwFrequency, true];
-  player setVariable [QGVAR(asw), [(call TFAR_fnc_activeSwRadio), ((call TFAR_fnc_ActiveSwRadio) call TFAR_fnc_getAdditionalSwChannel) + 1] call TFAR_fnc_getChannelFrequency, true];
+  if (isClass(configFile >> "CfgPatches" >> "acre_main")) then {
+    player setVariable [QGVAR(radios), call acre_api_fnc_getCurrentRadioList];
+  };
+  if (isClass(configFile >> "CfgPatches" >> "tfar_core")) then {
+    player setVariable [QGVAR(psw), call TFAR_fnc_currentSwFrequency, true];
+    player setVariable [QGVAR(asw), [(call TFAR_fnc_activeSwRadio), ((call TFAR_fnc_ActiveSwRadio) call TFAR_fnc_getAdditionalSwChannel) + 1] call TFAR_fnc_getChannelFrequency, true];
+  };
   player setVariable [QGVAR(spectator), player getVariable ["ace_spectator_isSet", false], true];
   player setVariable [QGVAR(team), assignedTeam player, true];
 }, 1] call CBA_fnc_addPerFrameHandler;
@@ -12,7 +17,7 @@
 GVAR(placementPreview) = objNull;
 
 [{
-  if (call synixe_common_fnc_inZeus) then {
+  if (call EFUNC(common,inZeus)) then {
     if !(GVAR(placementPreview) isEqualTo objNull) then {
       {
         GVAR(placementPreview) disableCollisionWith _x;
@@ -26,7 +31,7 @@ GVAR(placementPreview) = objNull;
 }] call CBA_fnc_addPerFrameHandler;
 
 addMissionEventHandler ["Draw3D", {
-  if (call synixe_common_fnc_inZeus) then {
+  if (call EFUNC(common,inZeus)) then {
     call FUNC(updatePlayerInfo);
     if (player getVariable [QGVAR(visibilityIndicator), false]) then {
       call FUNC(updateVisibility);

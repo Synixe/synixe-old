@@ -37,12 +37,10 @@ if (isMultiplayer) then {
       if (_position == 1) then {
         if ((groupId group player) find "-" == -1) then {
           //Squad Leader
-          systemChat "You are a Squad Leader";
           player setVariable [QGVAR(role), "SL", true];
           [QGVAR(squadLeader), [group player]] call CBA_fnc_globalEvent;
         } else {
           //Team Leader
-          systemChat "You are a Team Leader";
           private _parent = [side player, _parentSquad] call FUNC(squadExists);
           if !(_parent isEqualTo grpNull) then {
             [player] joinSilent _parent;
@@ -54,18 +52,14 @@ if (isMultiplayer) then {
         private _parent = [side player, _parentSquad] call FUNC(squadExists);
         if (_parent isEqualTo (group player)) then {
           //Squad Level Member
-          systemChat "You are a Squad Level Member";
         } else {
           //Team Member
-          systemChat "You are a Team Member";
           if !(_parent isEqualTo grpNull) then {
             [player] joinSilent _parent;
           };
           player assignTeam (_team call FUNC(teamColor));
         };
       };
-    } else {
-      systemChat "You are not in a Fireteam System";
     };
 
     player spawn FUNC(tfar);

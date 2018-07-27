@@ -7,6 +7,8 @@
 
 #include "script_component.hpp"
 
+if (call EFUNC(common,inZeusScreenshot)) exitWith {};
+
 private _pos = AGLtoASL screenToWorld getMousePosition;
 
 private _intersections = lineIntersectsSurfaces [getPosASL curatorCamera, _pos];
@@ -18,15 +20,22 @@ private _posHigh = [_pos select 0, _pos select 1, (_pos select 2) + 1];
 private _players = 0;
 private _highest = 0;
 {
-  if (_players == 0 && {count lineIntersectsSurfaces [eyePos _x, _pos, _x, GVAR(placementPreview)] == 0 || count lineIntersectsSurfaces [eyePos _x, _posHigh, _x, GVAR(placementPreview)] == 0}) then {
-    _players = _players + 1;
-    private _visibility = [objNull, "VIEW"] checkVisibility [eyePos _x, _posHigh];
-    //If I can find a way to detect the hidden zeus interface, I will bring in the 3D line
-    //drawLine3D [ASLToAGL eyePos _x, ASLToAGL _pos, [1,0,0,_visibility]];
-    if (_visibility > _highest) then {
-      _highest = _visibility;
-    }
-  }
+  if (side _x != sideLogic) then {
+    private _dir = (_x getRelDir _posHigh) + 90;
+    if (_dir >= 360) then {
+      _dir = _dir - 360;
+    };
+    if (_dir < 180) then {
+      if (_players == 0 && {count lineIntersectsSurfaces [eyePos _x, _pos, _x, GVAR(placementPreview)] == 0 || count lineIntersectsSurfaces [eyePos _x, _posHigh, _x, GVAR(placementPreview)] == 0}) then {
+        _players = _players + 1;
+        private _visibility = [objNull, "VIEW"] checkVisibility [eyePos _x, _posHigh];
+        drawLine3D [ASLToAGL eyePos _x, ASLToAGL _pos, [1, 0, 0, _visibility]];
+        if (_visibility > _highest) then {
+          _highest = _visibility;
+        };
+      };
+    };
+  };
 } forEach allPlayers;
 
 player setVariable [QGVAR(visibilityColor), [0,1,0,1]];

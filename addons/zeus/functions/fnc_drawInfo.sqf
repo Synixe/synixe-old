@@ -20,7 +20,9 @@
 
 params ["_unit", "_text", ["_color", [1,1,1,1]]];
 
-if (call synixe_common_fnc_inZeus) then {
+if (call EFUNC(common,inZeusScreenshot)) exitWith {};
+
+if (call EFUNC(common,inZeus)) then {
 
   if (_unit getVariable [QGVAR(spectator), false]) then {
     _unit = _unit getVariable [QGVAR(corspe), _unit];

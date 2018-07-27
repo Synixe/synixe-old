@@ -11,9 +11,13 @@ PREP(callsignBlock);
 PREP(callsignChannel);
 PREP(callsignFreq);
 PREP(dec2hex);
+PREP(inMainMenu);
 PREP(inZeus);
+PREP(inZeusScreenshot);
+PREP(itemName);
 PREP(setkey);
 
 //Tools
 PREP(dump);
 PREP(screenshot);
+PREP(joinServer);

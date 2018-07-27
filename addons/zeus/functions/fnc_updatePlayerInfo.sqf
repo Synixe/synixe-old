@@ -22,18 +22,32 @@
     };
     if (player getVariable [QGVAR(displayTeam), false]) then {
       private _team = _x getVariable [QGVAR(team), "MAIN"];
-      private _color = (_team call synixe_fireteams_fnc_teamNumber) call synixe_fireteams_fnc_teamColorValues;
+      private _color = (_team call EFUNC(fireteams,teamNumber)) call EFUNC(fireteams,teamColorValues);
       [_x, _team, _color] call FUNC(drawInfo);
     };
     if (_x getVariable QGVAR(spectator)) then {
       [_x, "Spectating", [1,1,1,1]] call FUNC(drawInfo);
     } else {
-      if (player getVariable [QGVAR(displayTFAR), false]) then {
-        private _asw = _x getVariable [QGVAR(asw), ""];
-        if (_asw isEqualTo "") then {
-          [_x, _x getVariable [QGVAR(psw), "No Radio"], [1,1,1,1]] call FUNC(drawInfo);
-        } else {
-          [_x, format ["%1 (%2)", _x getVariable [QGVAR(psw), "NA"], _asw], [1,1,1,1]] call FUNC(drawInfo);
+      if (player getVariable [QGVAR(displayRadio), false]) then {
+        if (isClass(configFile >> "CfgPatches" >> "acre_main")) then {
+          private _radios = "";
+          private _count = 0;
+          {
+            if (_count > 0) then {
+              _radios = _radios + ", ";
+            };
+            _radios = _radios + (_x call EFUNC(common,itemName));
+            _count = _count + 1;
+          } forEach (_x getVariable [QGVAR(radios), []]);
+          [_x, _radios, [1,1,1,1]] call FUNC(drawInfo);
+        };
+        if (isClass(configFile >> "CfgPatches" >> "tfar_core")) then {
+          private _asw = _x getVariable [QGVAR(asw), ""];
+          if (_asw isEqualTo "") then {
+            [_x, _x getVariable [QGVAR(psw), "No Radio"], [1,1,1,1]] call FUNC(drawInfo);
+          } else {
+            [_x, format ["%1 (%2)", _x getVariable [QGVAR(psw), "NA"], _asw], [1,1,1,1]] call FUNC(drawInfo);
+          };
         };
       };
       if (player getVariable [QGVAR(displayMedical), false]) then {
