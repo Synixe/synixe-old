@@ -1,8 +1,7 @@
 # Synixe
 
 ## Features
-* Automatic TFAR Frequency Setup
-* Automatic TFAR Channel Switching for Squads
+* Automatic TFAR and ACRE Radio Setup
 * Adds Discord Rich Presence
 * Adds ACE Earplugs to all players
 * Adds Faction Selection for Zeus Templates
@@ -12,9 +11,10 @@
 * Corrects temperatures on Winter maps
 * Placing units on roofs and carriers
 * Zeus Player Info
+* Zeus Player Visibility Indicator
 
 ## Zeus Modules
-* Change Loadout - Set the loadout from a list of Synixe Factions
+* Make Wreck - Instantly turns any vehicle into a wreck
 * Give Earplugs - Gives a unit ACE Earplugs
 
 ## Mission Making Scripts
