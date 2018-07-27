@@ -32,19 +32,19 @@ uiNamespace getVariable [QGVAR(loadingStatus), 0] ctrlSetText "Waiting for ACRE 
 
   call FUNC(acre_setup);
 
-  [-2, {
-    0 spawn {
-      sleep 1;
-      INC(EGVAR(loading,ready));
-    };
+  [0, {
+    private _ready = (missionNamespace getVariable [QEGVAR(loading,ready), 0]) + 1;
+    missionNamespace setVariable [QEGVAR(loading,ready), _ready, true];
   }] call CBA_fnc_globalExecute;
+
   waitUntil {
+    private _ready = missionNamespace getVariable [QEGVAR(loading,ready), 0];
     uiNamespace getVariable [QGVAR(loadingStatus), 0] ctrlSetText format [
       "%1 / %2 Players Ready",
-      EGVAR(loading,ready),
-      count allPlayers
+      _ready,
+      call EFUNC(common,totalPlayers)
     ];
-    (count allPlayers) isEqualTo EGVAR(loading,ready)
+    (call EFUNC(common,totalPlayers)) isEqualTo _ready
   };
   sleep 1;
   uiNamespace getVariable [QGVAR(loadingScreen), 0] closeDisplay 1;

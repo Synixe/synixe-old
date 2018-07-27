@@ -16,6 +16,7 @@ PREP(inZeus);
 PREP(inZeusScreenshot);
 PREP(itemName);
 PREP(setkey);
+PREP(totalPlayers);
 
 //Tools
 PREP(dump);

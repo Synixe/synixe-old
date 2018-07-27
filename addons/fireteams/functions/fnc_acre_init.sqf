@@ -80,35 +80,37 @@ switch (side player) do {
 
   disableUserInput true;
 
-  //Incase of error
-  0 spawn {
-    sleep 15;
-    //TODO Dispaly a warning if the loading was not successful
-    uiNamespace getVariable [QGVAR(loadingScreen), 0] closeDisplay 1;
-    disableUserInput false;
-  };
-
   private _displayIDD = 46;
 
   waitUntil { !isNull(findDisplay _displayIDD) };
   uiNamespace setVariable [QGVAR(loadingScreen), (findDisplay _displayIDD) createDisplay "RscDisplayLoadMission"];
   uiNamespace setVariable [QGVAR(loadingStatus), uiNamespace getVariable [QGVAR(loadingScreen), 0] displayCtrl 1102];
 
-  sleep 2;
+  uiNamespace getVariable [QGVAR(loadingStatus), 0] ctrlSetText "Loading";
 
-  [-1, {
-    0 spawn {
-      sleep 1;
-      INC(EGVAR(loading,loaded));
-    };
+  [0, {
+    private _loaded = (missionNamespace getVariable [QEGVAR(loading,loaded), 0]) + 1;
+    missionNamespace setVariable [QEGVAR(loading,loaded), _loaded, true];
   }] call CBA_fnc_globalExecute;
+
   waitUntil {
+    private _loaded = missionNamespace getVariable [QEGVAR(loading,loaded), 0];
+    uiNamespace getVariable [QGVAR(loadingStatus), 0] ctrlSetText format [
+      "%1 Players Loading",
+      _loaded,
+      call EFUNC(common,totalPlayers)
+    ];
+    time > 20
+  };
+
+  waitUntil {
+    private _loaded = missionNamespace getVariable [QEGVAR(loading,loaded), 0];
     uiNamespace getVariable [QGVAR(loadingStatus), 0] ctrlSetText format [
       "%1 / %2 Players Loaded",
-      EGVAR(loading,loaded),
-      count allPlayers
+      _loaded,
+      call EFUNC(common,totalPlayers)
     ];
-    (count allPlayers) isEqualTo EGVAR(loading,loaded)
+    (call EFUNC(common,totalPlayers)) isEqualTo _loaded
   };
 
   private _position = parseNumber(([[str player, count(toArray(str group player))+1] call BIS_fnc_trimString, " "] call BIS_fnc_splitString) select 0);

@@ -4,7 +4,7 @@
 [{
   player setVariable [QGVAR(fps), floor diag_fps, true];
   if (isClass(configFile >> "CfgPatches" >> "acre_main")) then {
-    player setVariable [QGVAR(radios), call acre_api_fnc_getCurrentRadioList];
+    player setVariable [QGVAR(radios), call acre_api_fnc_getCurrentRadioList, true];
   };
   if (isClass(configFile >> "CfgPatches" >> "tfar_core")) then {
     player setVariable [QGVAR(psw), call TFAR_fnc_currentSwFrequency, true];
