@@ -14,4 +14,13 @@
  * Public: [Yes/No]
  */
 
-systemChat "Take Not Implemented";
+#include "script_component.hpp"
+
+params ["_target"];
+
+systemChat format ["%1", _target];
+
+private _map = _target call FUNC(getMap);
+_target removeItem _map;
+ace_player addItem _map;
+[ace_player, "AmovPercMstpSrasWrflDnon_diary"] call ace_common_fnc_doAnimation;

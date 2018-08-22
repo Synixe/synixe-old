@@ -1,7 +1,5 @@
 #include "script_component.hpp"
 
-//disableUserInput true;
-
 private _firstrun = profileNamespace getVariable [QGVAR(firstSetup), true];
 
 if (_firstrun) then {
@@ -52,7 +50,7 @@ switch (side player) do {
     ["gr"] call acre_api_fnc_babelSetSpokenLanguages;
   };
   case sideLogic: {
-    ["en", "ru", "ar", "gr"] call acre_api_fnc_babelSetSpokenLanguages;
+    ["en", "fa", "ar", "fr", "ru", "gr"] call acre_api_fnc_babelSetSpokenLanguages;
   };
 };
 
@@ -89,18 +87,21 @@ switch (side player) do {
   uiNamespace getVariable [QGVAR(loadingStatus), 0] ctrlSetText "Loading";
 
   [0, {
-    private _loaded = (missionNamespace getVariable [QEGVAR(loading,loaded), 0]) + 1;
-    missionNamespace setVariable [QEGVAR(loading,loaded), _loaded, true];
+    missionNamespace setVariable [QEGVAR(loading,loaded), (missionNamespace getVariable [QEGVAR(loading,loaded), 0]) + 1, true];
   }] call CBA_fnc_globalExecute;
 
   waitUntil {
     private _loaded = missionNamespace getVariable [QEGVAR(loading,loaded), 0];
+    private _time = 20;
+    if (missionName == "tempMissionMP") then {
+      _time = 2;
+    };
     uiNamespace getVariable [QGVAR(loadingStatus), 0] ctrlSetText format [
       "%1 Players Loading",
       _loaded,
       call EFUNC(common,totalPlayers)
     ];
-    time > 20
+    time > _time
   };
 
   waitUntil {
@@ -151,6 +152,7 @@ switch (side player) do {
   if (side player isEqualTo sideLogic) then {
     disableUserInput false;
     player enableSimulation false;
+    0 spawn FUNC(doneLoading);
   };
 
   player setVariable [QGVAR(group), group player, true];

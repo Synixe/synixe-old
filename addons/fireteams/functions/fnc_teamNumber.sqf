@@ -23,4 +23,4 @@ switch (_this) do {
   case "YELLOW":  {_ret = 5;};
 };
 
-_ret;
+_ret

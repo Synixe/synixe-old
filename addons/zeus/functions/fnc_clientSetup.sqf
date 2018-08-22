@@ -26,6 +26,7 @@ GVAR(placementPreview) = objNull;
     };
     if (side player isEqualTo sideLogic) then {
       player setPos (getPos curatorCamera);
+      player setDir (getDir curatorCamera);
     };
   };
 }] call CBA_fnc_addPerFrameHandler;

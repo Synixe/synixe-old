@@ -18,7 +18,7 @@ class CfgVehicles {
           class Synixe_Map_Take {
             displayName = "Take";
             condition = "!(alive _target)";
-            statement = "(_target call synixe_maps_fnc_getMap) call synixe_maps_fnc_take";
+            statement = "_target call synixe_maps_fnc_take";
           };
         };
       };
@@ -27,7 +27,7 @@ class CfgVehicles {
       class Synixe_Map {
         displayName = "Get Unique Map";
         icon = "\a3\3DEN\Data\Displays\Display3DEN\ToolBar\map_off_ca.paa";
-        condition = "(player != ace_player) && { !(ace_player call synixe_maps_fnc_hasUniqueMap) }";
+        condition = "(""itemMap"" in (assignedItems player)) && { !(ace_player call synixe_maps_fnc_hasUniqueMap) }";
         statement = "call synixe_maps_fnc_request";
       };
     };

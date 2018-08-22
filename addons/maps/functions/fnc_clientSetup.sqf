@@ -33,7 +33,10 @@ addMissionEventHandler ["Map", {
       if ("ItemMap" in (items ace_player)) then {
         [{openMap false;}] call CBA_fnc_execNextFrame;
         systemChat "You do not have a unqiue map. Use Self Interaction to request one";
-      };
+      } else {
+        [{openMap false;}] call CBA_fnc_execNextFrame;
+        systemChat "You do not have a map.";
+      }
     };
   };
 }];
