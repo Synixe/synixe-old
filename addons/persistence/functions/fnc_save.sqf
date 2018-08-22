@@ -3,31 +3,31 @@
 
 private _blacklist =
 [
-	"ModuleCurator_F",
-	"GroundWeaponHolder",
-	"Salema_F",
-	"Ornate_random_F",
-	"Mackerel_F",
-	"Tuna_F",
-	"Mullet_F",
-	"CatShark_F",
-	"Rabbit_F",
-	"Snake_random_F",
-	"Turtle_F",
-	"Hen_random_F",
-	"Cock_random_F",
-	"Cock_white_F",
-	"Sheep_random_F",
-	"Logic"
+  "ModuleCurator_F",
+  "GroundWeaponHolder",
+  "Salema_F",
+  "Ornate_random_F",
+  "Mackerel_F",
+  "Tuna_F",
+  "Mullet_F",
+  "CatShark_F",
+  "Rabbit_F",
+  "Snake_random_F",
+  "Turtle_F",
+  "Hen_random_F",
+  "Cock_random_F",
+  "Cock_white_F",
+  "Sheep_random_F",
+  "Logic"
 ];
 
 private _dialogResult = [
-	"Save Mission State",
-	[
-		["Range", ["50m", "100m", "500m", "1km", "2km", "5km", "Entire Map"], 6],
-		["Include Empty Vehicles", ["Yes", "No"]],
+  "Save Mission State",
+  [
+    ["Range", ["50m", "100m", "500m", "1km", "2km", "5km", "Entire Map"], 6],
+    ["Include Empty Vehicles", ["Yes", "No"]],
     ["Include Objects", ["Yes", "No"]]
-	]
+  ]
 ] call Ares_fnc_ShowChooseDialog;
 if (count _dialogResult == 0) exitWith { "User cancelled dialog."; };
 
@@ -35,14 +35,14 @@ private _position = _this select 0;
 private _radius = 100;
 switch (_dialogResult select 0) do
 {
-	case 0: { _radius = 50; };
-	case 1: { _radius = 100; };
-	case 2: { _radius = 500; };
-	case 3: { _radius = 1000; };
-	case 4: { _radius = 2000; };
-	case 5: { _radius = 5000; };
-	case 6: { _radius = -1; };
-	default { _radius = 100; };
+  case 0: { _radius = 50; };
+  case 1: { _radius = 100; };
+  case 2: { _radius = 500; };
+  case 3: { _radius = 1000; };
+  case 4: { _radius = 2000; };
+  case 5: { _radius = 5000; };
+  case 6: { _radius = -1; };
+  default { _radius = 100; };
 };
 
 private _includeEmptyVehicles = if (_dialogResult select 1 == 0) then { true; } else { false; };
@@ -59,11 +59,11 @@ private _groups = [];
   };
   if (!_ignore && {(_x distance _position <= _radius) || _radius == -1}) then {
     private _isUnit =  (_x isKindOf "CAManBase")
-              			|| (_x isKindOf "car")
-              			|| (_x isKindOf "tank")
-              			|| (_x isKindOf "air")
-              			|| (_x isKindOf "StaticWeapon")
-              			|| (_x isKindOf "ship");
+                    || (_x isKindOf "car")
+                    || (_x isKindOf "tank")
+                    || (_x isKindOf "air")
+                    || (_x isKindOf "StaticWeapon")
+                    || (_x isKindOf "ship");
     if (_isUnit) then {
       if (_x isKindOf "CAManBase") then {
         if !((group _x) in _groups) then {
@@ -79,9 +79,9 @@ private _groups = [];
         };
       };
     } else {
-			if (side _x != sideUnknown && side _x != sideLogic) then {
-				_emptyObjects pushBack _x;
-			};
+      if (side _x != sideUnknown && side _x != sideLogic) then {
+        _emptyObjects pushBack _x;
+      };
     };
   };
 } forEach allMissionObjects "";
@@ -115,8 +115,8 @@ private _first = true;
     (vectorUp _x),
     _points,
     _damage,
-		(fuel _x),
-		(locked _x),
+    (fuel _x),
+    (locked _x),
     _x call FUNC(containers)
   ];
 } forEach _emptyVehicles;
@@ -126,21 +126,21 @@ _output pushBack "]]";
 _output pushBack ",[""objects"",[";
 private _first = true;
 {
-	if !(_first) then {
+  if !(_first) then {
     _output pushBack ",";
   } else {
     _first = false;
   };
-	_output pushBack format ["[""%1"", %2, %3, %4, %5]",
-		(typeOf _x), (position _x), (getPosWorld _x), (vectorDir _x), (vectorUp _x)
-	];
+  _output pushBack format ["[""%1"", %2, %3, %4, %5]",
+    (typeOf _x), (position _x), (getPosWorld _x), (vectorDir _x), (vectorUp _x)
+  ];
 } forEach _emptyObjects;
 _output pushBack "]]";
 
 private _text = "[";
 {
-	_text = _text + _x;
-	[_x] call Ares_fnc_LogMessage;
+  _text = _text + _x;
+  [_x] call Ares_fnc_LogMessage;
 } forEach _output;
 _text = _text + "]";
 uiNamespace setVariable ['Ares_CopyPaste_Dialog_Text', _text];
