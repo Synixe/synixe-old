@@ -1,0 +1,13 @@
+[package]
+name = "sgc_stats"
+version = "0.1.0"
+authors = ["Brett <brett@bmandesigns.com>"]
+
+[lib]
+name = "synixe_extension"
+crate-type = ["cdylib"]
+
+[dependencies]
+libc = "*"
+lazy_static = "1.0.0"
+enigo = "0.0.12"

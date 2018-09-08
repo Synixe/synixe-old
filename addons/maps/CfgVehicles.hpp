@@ -6,19 +6,19 @@ class CfgVehicles {
         class Synixe_Map {
           displayName = "Map";
           icon = "\a3\3DEN\Data\Displays\Display3DEN\ToolBar\map_off_ca.paa";
-          condition = "(_target call synixe_maps_fnc_canMapInteract) && {_target call synixe_maps_fnc_hasUniqueMap}";
+          condition = QUOTE((_target call FUNC(canMapInteract)) && {_target call FUNC(hasUniqueMap)});
           class Synixe_Map_Peek {
             displayName = "Peek";
-            statement = "(_target call synixe_maps_fnc_getMap) call synixe_maps_fnc_peek";
+            statement = QUOTE((_target call FUNC(getMap)) call FUNC(peek));
           };
           class Synixe_Map_Copy {
             displayName = "Copy Markers";
-            statement = "(_target call synixe_maps_fnc_getMap) call synixe_maps_fnc_copy";
+            statement = QUOTE((_target call FUNC(getMap)) call FUNC(copy));
           };
           class Synixe_Map_Take {
             displayName = "Take";
-            condition = "!(alive _target)";
-            statement = "_target call synixe_maps_fnc_take";
+            condition = QUOTE(!(alive _target));
+            statement = QUOTE(_target call FUNC(take));
           };
         };
       };
@@ -27,36 +27,9 @@ class CfgVehicles {
       class Synixe_Map {
         displayName = "Get Unique Map";
         icon = "\a3\3DEN\Data\Displays\Display3DEN\ToolBar\map_off_ca.paa";
-        condition = "(""itemMap"" in (assignedItems player)) && { !(ace_player call synixe_maps_fnc_hasUniqueMap) }";
-        statement = "call synixe_maps_fnc_request";
+        condition = QUOTE((""ItemMap"" in (assignedItems ace_player)) && { !(ace_player call FUNC(hasUniqueMap)) });
+        statement = QUOTE(call FUNC(request));
       };
     };
   };
-
-  /*class Thing;
-  class ThingX: Thing {
-    class ACE_Actions {
-      class ACE_MainActions {
-        codition = QUOTE(true);
-        class Synixe_Map {
-          displayName = "Map";
-          icon = "\a3\3DEN\Data\Displays\Display3DEN\ToolBar\map_off_ca.paa";
-          condition = "_target call synixe_maps_fnc_hasUniqueMap";
-          class Synixe_Map_Peek {
-            displayName = "Peek";
-            statement = "(_target call synixe_maps_fnc_getMap) call synixe_maps_fnc_peek";
-          };
-          class Synixe_Map_Copy {
-            displayName = "Copy Markers";
-            statement = "(_target call synixe_maps_fnc_getMap) call synixe_maps_fnc_copy";
-          };
-          class Synixe_Map_Take {
-            displayName = "Take";
-            condition = "(_target isKindOf ""CAManBase"") && {!(alive _target)}";
-            statement = "(_target call synixe_maps_fnc_getMap) call synixe_maps_fnc_take";
-          };
-        };
-      };
-    };
-  };*/
 };

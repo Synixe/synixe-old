@@ -4,13 +4,13 @@
  *
  * Arguments:
  * 0: _squad <GROUP>
- * 1: _team <NUMBER>
+ * 1: _team <STRING>
  *
  * Return Value:
  * Members [<UNIT>]
  *
  * Example:
- * [group player, 1] call synixe_fireteams_fnc_teamMembers
+ * [group player, "MAIN"] call synixe_fireteams_fnc_teamMembers
  *
  * Public: Yes
  */
@@ -19,13 +19,13 @@
 
 params [
   ["_squad", grpNull],
-  ["_team", 0]
+  ["_team", "MAIN"]
 ];
 
 private _members = [];
 
 {
-  if (_x call FUNC(team) == _team) then {
+  if (assignedTeam _x == _team) then {
     _members pushBack _x;
   }
 } forEach units _squad;

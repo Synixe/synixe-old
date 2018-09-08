@@ -3,8 +3,6 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
-//using WindowsInput;
-//using WindowsInput.Native;
 
 namespace Synixe
 {

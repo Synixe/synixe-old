@@ -22,3 +22,6 @@ PREP(totalPlayers);
 PREP(dump);
 PREP(screenshot);
 PREP(joinServer);
+
+//Joke
+PREP(m4a1);

@@ -46,6 +46,6 @@
 
   _script ctrlAddEventHandler ["Draw", {
     params ["_script"];
-    _script call FUNC(tick);
+    _script call FUNC(tickRadar);
   }];
 };

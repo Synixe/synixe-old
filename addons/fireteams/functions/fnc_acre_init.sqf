@@ -76,9 +76,19 @@ switch (side player) do {
 
 0 spawn {
 
-  disableUserInput true;
-
   private _displayIDD = 46;
+
+  0 spawn {
+    sleep 60;
+    if !(isNull(findDisplay 46)) then {
+      uiNamespace getVariable [QGVAR(loadingScreen), 0] closeDisplay 1;
+      disableUserInput false;
+      ["synixe_ready"] call CBA_fnc_localEvent;
+      ["synixe_loading_done"] call CBA_fnc_serverEvent;
+    };
+  };
+
+  disableUserInput true;
 
   waitUntil { !isNull(findDisplay _displayIDD) };
   uiNamespace setVariable [QGVAR(loadingScreen), (findDisplay _displayIDD) createDisplay "RscDisplayLoadMission"];
@@ -92,7 +102,7 @@ switch (side player) do {
 
   waitUntil {
     private _loaded = missionNamespace getVariable [QEGVAR(loading,loaded), 0];
-    private _time = 20;
+    private _time = 15;
     if (missionName == "tempMissionMP") then {
       _time = 2;
     };
@@ -159,15 +169,15 @@ switch (side player) do {
   player setVariable [QGVAR(ready), true];
 
   [{
-    if !((player getVariable [QGVAR(group), grpNull]) isEqualTo (group player)) then {
+    if !((ace_player getVariable [QGVAR(group), grpNull]) isEqualTo (group ace_player)) then {
       0 spawn FUNC(acre_setup);
-      player setVariable [QGVAR(group), group player, true];
+      ace_player setVariable [QGVAR(group), group ace_player, true];
     };
   }, 2] call CBA_fnc_addPerFrameHandler;
 
   ["CBA_teamColorChanged", {
     params ["_unit"];
-    if (_unit isEqualTo player) then {
+    if (_unit isEqualTo ace_player) then {
       0 spawn FUNC(acre_setup);
     };
   }] call CBA_fnc_addEventHandler;

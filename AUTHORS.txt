@@ -4,5 +4,4 @@
 Brett
 
 # CONTRIBUTORS
-Kalthramis
 ReignOfDeath
