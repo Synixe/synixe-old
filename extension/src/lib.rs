@@ -1,5 +1,5 @@
 extern crate enigo;
-use enigo::{Enigo, Key};
+use enigo::{Enigo, KeyboardControllable, Key};
 
 extern crate libc;
 use libc::c_char;

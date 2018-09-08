@@ -1,10 +1,10 @@
 [package]
-name = "sgc_stats"
+name = "synixe_extension"
 version = "0.1.0"
 authors = ["Brett <brett@bmandesigns.com>"]
 
 [lib]
-name = "synixe_extension"
+name = "synixe"
 crate-type = ["cdylib"]
 
 [dependencies]
