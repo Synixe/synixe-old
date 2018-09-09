@@ -121,7 +121,7 @@ ADDON = false;
   "CHECKBOX",
   "Display Radio Information",
   "Synixe Zeus Player Info",
-  true,
+  false,
   false,
   {
     params ["_value"];
@@ -144,6 +144,22 @@ ADDON = false;
     _value spawn {
       waitUntil {time > 0 && !(isNull player)};
       player setVariable [QGVAR(displayMedical), _this];
+    };
+  }
+] call CBA_Settings_fnc_init;
+
+[
+  "synixe_zeus_medical_lives",
+  "CHECKBOX",
+  "Display ACE Medical Lives",
+  "Synixe Zeus Player Info",
+  false,
+  false,
+  {
+    params ["_value"];
+    _value spawn {
+      waitUntil {time > 0 && !(isNull player)};
+      player setVariable [QGVAR(displayMedicalLives), _this];
     };
   }
 ] call CBA_Settings_fnc_init;
