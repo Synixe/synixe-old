@@ -37,39 +37,43 @@ if (!GVAR(showRadar) || { call EFUNC(common,inZeus) } ) then {
 
   {
     private _target = _nearUnits param [_forEachIndex, objNull];
-    if (isNull _target || {side _target != side ace_player}) then {
+    if (isNull _target) then {
       _x ctrlShow false;
     } else {
-      //Is the unit visible
-      if (count lineIntersectsSurfaces [eyePos ace_player, eyePos _target, ace_player, _target] == 0) then {
-        private _dir = ace_player getRelDir _target;
-        private _dist = (ace_player distance2D _target) / (_radius * 2);
+      if (_target getVariable [QGVAR(tracking), false] || {side _target == side ace_player}) then {
+        //Is the unit visible
+        _target setVariable [QGVAR(tracking), true];
+        if (count lineIntersectsSurfaces [eyePos ace_player, eyePos _target, ace_player, _target] == 0) then {
+          private _dir = ace_player getRelDir _target;
+          private _dist = (ace_player distance2D _target) / (_radius * 2);
 
-        private _icon = getText(configFile >> "CfgVehicles" >> typeOf vehicle _target >> "icon");
-        if (_icon select [0, 1] isEqualTo "\") then {
-          _x ctrlSetText (_icon);
-        } else {
-          _x ctrlSetText ("\a3\ui_f\data\map\vehicleicons\" + _icon + "_ca.paa");
-        };
+          _x ctrlSetText ((vehicle ace_player) call FUNC(getIcon));
 
-        _x ctrlSetAngle [getDir _target - _eyeDir, 0.5, 0.5];
-        _x ctrlSetScale GVAR(radarIconSize);
-        if (group ace_player == group _target) then {
-          _x ctrlSetTextColor (((assignedTeam _target) call EFUNC(fireteams,teamNumber)) call EFUNC(fireteams,teamColorValues));
+          _x ctrlSetAngle [getDir _target - _eyeDir, 0.5, 0.5];
+          _x ctrlSetScale GVAR(radarIconSize);
+          if (group ace_player isEqualTo group _target) then {
+            if (_target getVariable [QGVAR(considerDead), false]) then {
+              _x ctrlSetTextColor [0, 0, 0, 1];
+            } else {
+              _x ctrlSetTextColor (((assignedTeam _target) call EFUNC(fireteams,teamNumber)) call EFUNC(fireteams,teamColorValues));
+            }
+          } else {
+            _x ctrlSetTextColor [1, 0.5, 0, 1];
+          };
+          _x ctrlSetPosition [
+            (_center select 0) +  _width * (sin _dir * _dist) -  _width / (8 / GVAR(radarIconSize)),
+            (_center select 1) - _height * (cos _dir * _dist) - _height / (8 / GVAR(radarIconSize)),
+            _width / 4,
+            _height / 4
+          ];
+          _x ctrlCommit 0;
+          _x ctrlShow true;
         } else {
-          _x ctrlSetTextColor [1, 0.5, 0, 1];
+          _x ctrlShow false;
         };
-        _x ctrlSetPosition [
-          (_center select 0) +  _width * (sin _dir * _dist) -  _width / (8 / GVAR(radarIconSize)),
-          (_center select 1) - _height * (cos _dir * _dist) - _height / (8 / GVAR(radarIconSize)),
-          _width / 4,
-          _height / 4
-        ];
-        _x ctrlCommit 0;
-        _x ctrlShow true;
       } else {
         _x ctrlShow false;
-      }
+      };
     };
   } forEach _markers;
 };

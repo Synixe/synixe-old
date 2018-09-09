@@ -1,3 +1,6 @@
+//Common
+PREP(getIcon);
+
 //Radar
 PREP(initRadar);
 PREP(tickRadar);

@@ -10,9 +10,9 @@ private _actions = [];
       [
         format ["%1", _unit],
         [_unit, true] call ace_common_fnc_getName,
-        "",
-        {}, //Statement
-        {}, //Condition
+        _unit call FUNC(getIcon),
+        { true }, //Statement
+        { true }, //Condition
         {
           if (ace_interact_menu_selectedTarget isEqualTo _target) then {
             _this call FUNC(addTeamMemberActions)
