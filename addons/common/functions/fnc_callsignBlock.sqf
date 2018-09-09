@@ -1,16 +1,16 @@
 /*
  * Author: Brett
  * Contributor: Reign0fDeath
- * Return the frequency used by a callsign
+ * Returns the block used by a callsign
  *
  * Arguments:
  * 0: _callsign <STRING>
  *
  * Return Value:
- * frequency <NUMBER>
+ * block <NUMBER>
  *
  * Example:
- * callsign call synixe_common_fnc_callsignFreq
+ * callsign call synixe_common_fnc_callsignBlock
  *
  * Public: Yes
  */
@@ -97,4 +97,4 @@ switch (toLower _this) do {
   case "yelena":    { _block = 6; };
 };
 
-_block;
+_block

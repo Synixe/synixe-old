@@ -11,3 +11,4 @@ crate-type = ["cdylib"]
 libc = "*"
 lazy_static = "1.0.0"
 enigo = "0.0.12"
+discord-rpc-client = "^0.2"

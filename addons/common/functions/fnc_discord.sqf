@@ -25,10 +25,11 @@ if (call FUNC(inMainMenu)) then {
   };
 };
 
-"synixe" callExtension [
+private _response = "synixe" callExtension [
   "update",
   [
     _mission, _role, toLower(worldName),
     getText (configfile >> "CfgWorlds" >> worldname >> "description")
   ]
 ];
+_response
