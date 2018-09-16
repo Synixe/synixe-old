@@ -11,7 +11,13 @@ waitUntil {
     _ready,
     call EFUNC(common,totalPlayers)
   ];
-  (call EFUNC(common,totalPlayers)) isEqualTo _ready
+  private _done = false;
+  if (uiNamespace getVariable [QGVAR(skipLoading), false]) then {
+    _done = true;
+  } else {
+    _done = (call EFUNC(common,totalPlayers)) isEqualTo _ready;
+  };
+  _done
 };
 sleep 0.5;
 uiNamespace getVariable [QGVAR(loadingScreen), 0] closeDisplay 1;

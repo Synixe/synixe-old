@@ -8,7 +8,6 @@ class CfgVehicles {
           condition = QUOTE(true);
           insertChildren = QUOTE(call FUNC(addTeamMembers));
           statement = QUOTE(true);
-          icon = "\z\ace\addons\interaction\UI\team\team_management_ca.paa";
           showDisabled = 1;
         };
       };

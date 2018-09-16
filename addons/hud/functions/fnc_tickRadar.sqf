@@ -47,7 +47,7 @@ if (!GVAR(showRadar) || { call EFUNC(common,inZeus) } ) then {
           private _dir = ace_player getRelDir _target;
           private _dist = (ace_player distance2D _target) / (_radius * 2);
 
-          _x ctrlSetText ((vehicle ace_player) call FUNC(getIcon));
+          _x ctrlSetText ((vehicle _target) call FUNC(getIcon));
 
           _x ctrlSetAngle [getDir _target - _eyeDir, 0.5, 0.5];
           _x ctrlSetScale GVAR(radarIconSize);

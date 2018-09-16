@@ -22,7 +22,11 @@ switch (player getVariable [QGVAR(role), ""]) do {
 
     if ([player, SQUAD_RADIO] call acre_api_fnc_hasKindOfRadio) then {
       private _squadRadio = [SQUAD_RADIO] call acre_api_fnc_getRadioByType;
-      [_squadRadio, _block] call acre_api_fnc_setRadioChannel;
+      if (getMissionConfigValue QGVAR(singleSquadnet)) then {
+        [_squadRadio, 1] call acre_api_fnc_setRadioChannel;
+      } else {
+        [_squadRadio, _block] call acre_api_fnc_setRadioChannel;
+      };
       [_squadRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
     };
 

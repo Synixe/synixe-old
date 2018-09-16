@@ -55,23 +55,9 @@ switch (side player) do {
 };
 
 {
-  [_x, "default", "example1"] call acre_api_fnc_copyPreset;
-  [_x, "default", 1, "description", "ALPHA"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 2, "description", "BRAVO"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 3, "description", "CHARLIE"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 4, "description", "DELTA"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 5, "description", "ECHO"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 6, "description", "FOXTROT"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 7, "description", "COMMAND"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 8, "description", "INTEL"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 9, "description", "AIR TRANSPORT"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 10, "description", "LAND TRANSPORT"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 11, "description", "NAVAL TRANSPORT"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 12, "description", "AIR SUPPORT"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 13, "description", "LAND SUPPORT"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 14, "description", "NAVAL SUPPORT"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 15, "description", "ARTILLERY SUPPORT"] call acre_api_fnc_setPresetChannelField;
-  [_x, "default", 16, "description", "MEDICAL"] call acre_api_fnc_setPresetChannelField;
+  private _preset = (getMissionConfigValue QGVAR(radioPreset));
+  systemChat _preset;
+  [_x, _preset] call acre_api_fnc_setPreset;
 } forEach [SQUAD_RADIO, LONGRANGE_RADIO];
 
 0 spawn {
@@ -80,12 +66,7 @@ switch (side player) do {
 
   0 spawn {
     sleep 60;
-    if !(isNull(findDisplay 46)) then {
-      uiNamespace getVariable [QGVAR(loadingScreen), 0] closeDisplay 1;
-      disableUserInput false;
-      ["synixe_ready"] call CBA_fnc_localEvent;
-      ["synixe_loading_done"] call CBA_fnc_serverEvent;
-    };
+    uiNamespace setVariable [QGVAR(skipLoading), true];
   };
 
   disableUserInput true;
@@ -121,7 +102,13 @@ switch (side player) do {
       _loaded,
       call EFUNC(common,totalPlayers)
     ];
-    (call EFUNC(common,totalPlayers)) isEqualTo _loaded
+    private _done = false;
+    if (uiNamespace getVariable [QGVAR(skipLoading), false]) then {
+      _done = true;
+    } else {
+      _done = (call EFUNC(common,totalPlayers)) isEqualTo _loaded;
+    };
+    _done
   };
 
   private _position = parseNumber(([[str player, count(toArray(str group player))+1] call BIS_fnc_trimString, " "] call BIS_fnc_splitString) select 0);

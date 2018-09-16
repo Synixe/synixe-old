@@ -33,13 +33,13 @@ class CfgVehicles {
 
   class Synixe_Module_Wreck: Synixe_Module_Base {
     scopeCurator = 2;
-    function = "synixe_modules_fnc_wreck";
+    function = FUNC(wreck);
     displayName = "Make Wreck";
   };
 
   class Synixe_Module_Earplugs: Synixe_Module_Base {
     scopeCurator = 2;
-    function = "synixe_modules_fnc_earplugs";
+    function = FUNC(earplugs);
     displayName = "Give Earplugs";
   };
 };

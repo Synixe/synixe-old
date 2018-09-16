@@ -33,13 +33,13 @@ class CfgVehicles {
 
   class Synixe_Persistence_Module_Save: Synixe_Persistence_Module_Base {
     scopeCurator = 2;
-    function = "synixe_persistence_fnc_save";
+    function = FUNC(save);
     displayName = "Save State";
   };
 
   class Synixe_Persistence_Module_Load: Synixe_Persistence_Module_Base {
     scopeCurator = 2;
-    function = "synixe_persistence_fnc_loadLive";
+    function = FUNC(loadLive);
     displayName = "Load State";
   };
 };
