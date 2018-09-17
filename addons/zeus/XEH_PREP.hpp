@@ -1,10 +1,6 @@
 PREP(clientSetup);
 PREP(drawInfo);
-PREP(factionSelect);
 PREP(getSelectedClass);
-PREP(loadout);
-PREP(roleSelect);
-PREP(szt);
 PREP(updatePlayerInfo);
 PREP(updatePreview);
 PREP(updateVisibility);

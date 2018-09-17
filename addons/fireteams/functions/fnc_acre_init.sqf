@@ -84,7 +84,7 @@ switch (side player) do {
   waitUntil {
     private _loaded = missionNamespace getVariable [QEGVAR(loading,loaded), 0];
     private _time = 15;
-    if (missionName == "tempMissionMP") then {
+    if (is3DENMultiplayer) then {
       _time = 2;
     };
     uiNamespace getVariable [QGVAR(loadingStatus), 0] ctrlSetText format [
