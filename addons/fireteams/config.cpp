@@ -17,12 +17,12 @@ class CfgPatches {
 #include "CfgEventHandlers.hpp"
 
 class Cfg3DEN {
-	class Mission {
-		class SynixeAttributes {
-			class AttributeCategories {
-				class SynixeRadiosCategory {
+  class Mission {
+    class SynixeAttributes {
+      class AttributeCategories {
+        class SynixeRadiosCategory {
           displayName = "Radios";
-					class Attributes {
+          class Attributes {
             class SynixeRadioReceive {
               displayName = "Receive Radios";
               tooltip = "If checked, all players will receive the default radios";
@@ -31,16 +31,16 @@ class Cfg3DEN {
               defaultValue = "true";
               expression = "";
             };
-						class SynixeRadioPreset {
+            class SynixeRadioPreset {
               displayName = "Radio Preset";
-							property = "synixe_fireteams_radioPreset";
+              property = "synixe_fireteams_radioPreset";
               control = "Edit";
               tooltip = "ACRE Radio Preset";
               expression = "";
               typeName = "STRING";
               validate = "none";
               defaultValue = """default""";
-						};
+            };
             class SynixeRadioSingleSquad {
               displayName = "Single Squadnet";
               property = "synixe_fireteams_singleSquadnet";
@@ -49,9 +49,9 @@ class Cfg3DEN {
               defaultValue = "false";
               expression = "";
             };
-					};
-				};
-			};
-		};
-	};
+          };
+        };
+      };
+    };
+  };
 };

@@ -24,12 +24,12 @@ class Extended_DisplayLoad_EventHandlers {
 
 #include "display3DEN.hpp"
 class Cfg3DEN {
-	class Mission {
-		class SynixeAttributes {
-			displayName = "Synixe";
-			display = "Display3DENEditAttributesPreview";
-		};
-	};
+  class Mission {
+    class SynixeAttributes {
+      displayName = "Synixe";
+      display = "Display3DENEditAttributesPreview";
+    };
+  };
 };
 
 class RscStandardDisplay;

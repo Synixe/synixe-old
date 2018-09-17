@@ -8,21 +8,21 @@ systemChat "Creating Zeus Modules";
   private _objects = allMissionObjects "";
   {
     switch (typeOf _x) do {
-        case "ModuleCurator_F": {
-          private _owner = (_x get3DENAttribute "ModuleCurator_F_Owner") select 0;
-          if (_owner == "#adminLogged") then {
-            _needAdmin = false;
-          };
-          if (_owner == "curator") then {
-            _needZeus = false;
-          };
+      case "ModuleCurator_F": {
+        private _owner = (_x get3DENAttribute "ModuleCurator_F_Owner") select 0;
+        if (_owner == "#adminLogged") then {
+          _needAdmin = false;
         };
-        case "VirtualCurator_F": {
-          private _name = (_x get3DENAttribute "name") select 0;
-          if (_name == "curator") then {
-            _needCurator = false;
-          };
+        if (_owner == "curator") then {
+          _needZeus = false;
         };
+      };
+      case "VirtualCurator_F": {
+        private _name = (_x get3DENAttribute "name") select 0;
+        if (_name == "curator") then {
+          _needCurator = false;
+        };
+      };
     };
   } forEach _objects;
 
