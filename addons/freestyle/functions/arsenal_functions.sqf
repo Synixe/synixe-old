@@ -25,7 +25,7 @@ FLAG_ADD_WEAPONS = {
   };
 };
 
-#define NIGHT_VISION "NVGoggles_OPFOR","NVGoggles_INDEP","rhsusf_ANPVS_14","NVGogglesB_grn_F"
+#define NIGHT_VISION "NVGoggles","NVGoggles_OPFOR","NVGoggles_INDEP","rhsusf_ANPVS_14","NVGogglesB_grn_F"
 #define RANGEFINDERS "Laserdesignatior","Rangefinder","Laserdesignatior_03","ACE_Vector","ACE_VectorDay"
 
 #define GRENADES "HandGrenade","MiniGrenade","ACE_M14"

@@ -1,4 +1,4 @@
-release/*
+releases/*
 *.cache
 *.pbo
 texHeaders.bin
@@ -6,11 +6,10 @@ texHeaders.bin
 *.swo
 *.biprivatekey
 Thumbs.db
-extras/
-.vs/
-packages/
-DllExport.bat
 bin/
 obj/
 *.dll
-addons/admin/
+logs/
+include/
+keys/
+*.version

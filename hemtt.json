@@ -1,0 +1,14 @@
+{
+  "name": "Synixe",
+  "prefix": "synixe",
+  "author": "Brett",
+  "files": [
+    "mod.cpp",
+    "synixe_logo_transparent_ca.paa",
+    "synixe_x64.dll",
+    "ConfigDumpFileIO_x64.dll",
+    "README.md",
+    "LICENSE",
+    "AUTHORS.txt"
+  ]
+}
