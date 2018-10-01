@@ -1,5 +1,5 @@
 #include "script_component.hpp"
-#include "\achilles\modules_f_ares\module_header.hpp"
+#include "\achilles\modules_f_ares\module_header.h"
 
 private _blacklist =
 [
@@ -147,4 +147,4 @@ uiNamespace setVariable ['Ares_CopyPaste_Dialog_Text', _text];
 _dialog = createDialog "Ares_CopyPaste_Dialog";
 ["Mission SQF"] call Ares_fnc_ShowZeusMessage;
 
-#include "\achilles\modules_f_ares\module_footer.hpp"
+#include "\achilles\modules_f_ares\module_footer.h"

@@ -1,4 +1,4 @@
-#include "\achilles\modules_f_ares\module_header.hpp"
+#include "\achilles\modules_f_ares\module_header.h"
 
 private _unitUnderCursor = [_logic, false] call Ares_fnc_GetUnitUnderCursor;
 private _units = [];
@@ -61,4 +61,4 @@ if (_units isEqualTo []) exitWith {};
   _x call synixe_common_fnc_earplugs;
 } forEach _units;
 
-#include "\achilles\modules_f_ares\module_footer.hpp"
+#include "\achilles\modules_f_ares\module_footer.h"

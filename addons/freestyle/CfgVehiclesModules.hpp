@@ -33,7 +33,7 @@ class CfgVehicles {
 
   class Synixe_Freestyle_Module_LimitedArsenal: Synixe_Freestyle_Module_Base {
     scopeCurator = 2;
-    function = FUNC(limitedArsenal);
+    function = QUOTE(FUNC(limitedArsenal));
     displayName = "Limited Arsenal";
   };
 };

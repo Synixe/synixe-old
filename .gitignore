@@ -13,3 +13,4 @@ logs/
 include/
 keys/
 *.version
+hemtt.exe

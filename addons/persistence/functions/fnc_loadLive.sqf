@@ -1,5 +1,5 @@
 #include "script_component.hpp"
-#include "\achilles\modules_f_ares\module_header.hpp"
+#include "\achilles\modules_f_ares\module_header.h"
 
 private _data = -1 call Ares_fnc_GetArrayDataFromUser;
 
@@ -87,4 +87,4 @@ if (typeName _data == "STRING") then {
   } forEach _data;
 };
 
-#include "\achilles\modules_f_ares\module_footer.hpp"
+#include "\achilles\modules_f_ares\module_footer.h"

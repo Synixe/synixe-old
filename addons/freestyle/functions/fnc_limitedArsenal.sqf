@@ -1,4 +1,4 @@
-#include "\achilles\modules_f_ares\module_header.hpp"
+#include "\achilles\modules_f_ares\module_header.h"
 #include "script_component.hpp"
 
 private _position = position _logic;
@@ -153,4 +153,4 @@ switch (_faction) do {
 private _box = "Land_PaperBox_open_full_F" createVehicle _position;
 [_box, _items] call ace_arsenal_fnc_initBox;
 
-#include "\achilles\modules_f_ares\module_footer.hpp"
+#include "\achilles\modules_f_ares\module_footer.h"
