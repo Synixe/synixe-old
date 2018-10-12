@@ -11,8 +11,8 @@ extern crate libc;
 use libc::c_char;
 use libc::strncpy;
 
-use std::ffi::CString;
 use std::ffi::CStr;
+use std::ffi::CString;
 use std::sync::Mutex;
 use std::time::SystemTime;
 
@@ -29,7 +29,7 @@ fn get_c<T: Into<Vec<u8>>>(t: T) -> *mut c_char {
 
 #[no_mangle]
 pub unsafe extern "C" fn RvExtensionVersion(output: *mut c_char, output_size: usize) {
-  let v = get_c("0.2");
+  let v = get_c("0.3");
   strncpy(output, v, output_size);
 }
 
@@ -86,7 +86,7 @@ pub unsafe extern "C" fn RVExtensionArgs(output: *mut c_char, output_size: usize
             .timestamps(|time| time
               .start(TIMESTAMP)
             )
-          ).unwrap();
+          );
           let o = get_c("Updated");
           strncpy(output, o, size);
         } else {
